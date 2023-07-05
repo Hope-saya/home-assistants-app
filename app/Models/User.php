@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
 {
@@ -43,3 +44,75 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 }
+
+
+//the relationships now
+
+/*
+
+class allUserTable extends Model
+{
+    use HasFactory;
+    public function role()
+    {
+        return $this->hasOne(Role::class);
+    }
+
+    public function jobApplications()
+    {
+        return $this->hasMany(JobApplication::class);
+    }
+
+    public function jobPostings()
+    {
+        return $this->hasMany(JobPosting::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+}
+
+class Role extends Model
+{
+    public function users()
+    {
+        return $this->hasMany(user::class);
+    }
+}
+
+class JobApplication extends Model
+{
+    public function user()
+    {
+        return $this->belongsTo(user::class);
+    }
+
+    public function jobPosting()
+    {
+        return $this->belongsTo(JobPosting::class);
+    }
+}
+
+class JobPosting extends Model
+{
+    public function user()
+    {
+        return $this->belongsTo(Alluser::class);
+    }
+
+    public function jobApplications()
+    {
+        return $this->hasMany(JobApplication::class);
+    }
+}
+
+class Review extends Model
+{
+    public function user()
+    {
+        return $this->belongsTo(user::class);
+    }
+}
+*/
