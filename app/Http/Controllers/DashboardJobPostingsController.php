@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\JobPosting;
 
-class DashboardJobPostingController extends Controller
+class DashboardJobPostingsController extends Controller
 {
     /**
      * Display a listing of the resource.

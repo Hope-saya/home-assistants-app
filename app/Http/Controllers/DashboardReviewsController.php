@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Review;
 
-class DashboardReviewController extends Controller
+class DashboardReviewsController extends Controller
 {
     /**
      * Display a listing of the resource.

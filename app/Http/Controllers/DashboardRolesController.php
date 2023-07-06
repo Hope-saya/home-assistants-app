@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Role;
 
-class DashboardRoleController extends Controller
+class DashboardRolesController extends Controller
 {
     /**
      * Display a listing of the resource.
