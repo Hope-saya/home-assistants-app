@@ -8,15 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class JobApplication extends Model
 {
     use HasFactory;
-    protected $fillable = ['date', 'documents', 'availability'];
+
+    protected $fillable = ['date', 'documents', 'availability', 'user_id', 'job_id'];
+
     public function user()
     {
-        return $this->belongsTo(user::class);
+        return $this->belongsTo(user::class, 'user_id', 'id');
     }
 
     public function jobPosting()
     {
-        return $this->belongsTo(JobPosting::class);
+        return $this->belongsTo(JobPosting::class, 'job_id', 'id');
     }
 
     //properties
