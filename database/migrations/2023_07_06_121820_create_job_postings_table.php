@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('description');
             $table->string('salary_range');
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

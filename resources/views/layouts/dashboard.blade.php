@@ -10,8 +10,9 @@
 </head>
 
 <body>
-    @include ('partials.dashboard._navbar')
     {{-- @include ('partials.dashboard._sidebar') --}}
+    @include ('partials.dashboard._navbar')
+
 
     <div class="container-scroller">
         @yield('content')

@@ -25,7 +25,7 @@
               
               if($currentTime >= $morningStart && $currentTime < $afernoonStart){
                   $greeting = 'Good morning';
-              }elseif ($currentTime > $afernoonStart && $currentTime < $eveningStart) {
+              }elseif ($currentTime >= $afernoonStart && $currentTime < $eveningStart) {
                   $greeting = 'Good afternoon';
               } else {
                   $greeting = 'Good evening';
