@@ -13,7 +13,7 @@ class DashboardJobApplicationsController extends Controller
     public function index()
     {
         //
-        return view('dashboard.job-applications.list-job-applications');
+        return view('dashboard.jobApplications.list-jobApplications');
     }
 
     /**
@@ -22,7 +22,7 @@ class DashboardJobApplicationsController extends Controller
     public function create()
     {
         //
-        return view('dashboard.job-applications.add-job-application');
+        return view('dashboard.jobApplications.add-jobApplication');
     }
 
     /**
@@ -48,7 +48,7 @@ class DashboardJobApplicationsController extends Controller
         $job_application->availability = $request->input('availability');
         $job_application->save();
 
-        return redirect()->route('dashboards.job-applications')->with('success', 'Job Application Added');
+        return redirect()->route('dashboards.jobApplications')->with('success', 'Job Application Added');
     }
 
     /**
@@ -66,7 +66,7 @@ class DashboardJobApplicationsController extends Controller
     public function edit(string $id)
     {
         //
-        return view('dashboard.job-applications.edit-job-application');
+        return view('dashboard.jobApplications.edit-jobApplication');
     }
 
     /**
@@ -91,7 +91,7 @@ class DashboardJobApplicationsController extends Controller
         $job_application->availability = $request->input('availability');
         $job_application->save();
 
-        return redirect()->route('dashboards.job-applications')->with('success', 'Job Application Updated');
+        return redirect()->route('dashboards.jobApplications')->with('success', 'Job Application Updated');
     }
 
     /**

@@ -13,7 +13,7 @@ class DashboardJobPostingsController extends Controller
     public function index()
     {
         //
-        return view('dashboard.job-postings.list-job-postings');
+        return view('dashboard.jobPostings.list-jobPostings');
     }
 
     /**
@@ -22,7 +22,7 @@ class DashboardJobPostingsController extends Controller
     public function create()
     {
         //
-        return view('dashboard.job-postings.add-job-posting');
+        return view('dashboard.jobPostings.add-jobPosting');
     }
 
     /**
@@ -46,7 +46,7 @@ class DashboardJobPostingsController extends Controller
         $jobPosting->save();
 
 
-        return redirect()->route('dashboards.job-postings')->with('success', 'Job Posting Added');
+        return redirect()->route('dashboards.jobPostings')->with('success', 'Job Posting Added');
     }
 
     /**
@@ -64,7 +64,7 @@ class DashboardJobPostingsController extends Controller
     public function edit(string $id)
     {
         //
-        return view('dashboard.job-postings.edit-job-posting');
+        return view('dashboard.jobPostings.edit-jobPosting');
     }
 
     /**
@@ -87,7 +87,7 @@ class DashboardJobPostingsController extends Controller
         $jobPosting->description = $request->input('description');
         $jobPosting->save();
 
-        return redirect()->route('dashboards.job-postings')->with('success', 'Job Posting Updated');
+        return redirect()->route('dashboards.jobPostings')->with('success', 'Job Posting Updated');
     }
 
     /**
@@ -99,6 +99,6 @@ class DashboardJobPostingsController extends Controller
         $jobPosting = JobPosting::findOrFail($id);
         $jobPosting->delete();
 
-        return redirect()->route('dashboards.job-postings')->with('success', 'Job Posting Deleted');
+        return redirect()->route('dashboards.jobPostings')->with('success', 'Job Posting Deleted');
     }
 }
