@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('status');
             $table->string('description');
             $table->string('salary_range');
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
-             //Foreign keys
+            //Foreign keys
             $table->foreign('user_id')->references('id')->on('users');
         });
 

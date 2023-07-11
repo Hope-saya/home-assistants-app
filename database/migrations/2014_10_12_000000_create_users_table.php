@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function(Blueprint $table){
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('description');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('physical_location')->nullable();
             $table->string('bio')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->unsignedBigInteger('roleId');
+            $table->unsignedBigInteger('roleId')->nullable();;
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
