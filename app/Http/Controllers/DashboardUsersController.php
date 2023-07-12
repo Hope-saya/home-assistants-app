@@ -13,7 +13,8 @@ class DashboardUsersController extends Controller
     public function index()
     {
         //
-        return view('dashboard.users.users-list');
+        $users = User::all();
+        return view('dashboard.users.list-users', compact('users'));
     }
 
     /**
@@ -45,7 +46,8 @@ class DashboardUsersController extends Controller
         $user->password = $request->input('password');
         $user->save();
 
-        return redirect()->route('dashboards.users')->with('success', 'User Added');
+        //Ive used the home route here coz it works. for
+        return redirect()->route('home')->with('success', 'User Added');
     }
 
     /**

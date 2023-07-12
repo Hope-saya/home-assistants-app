@@ -21,15 +21,12 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('phoneNumber')->nullable();
-            $table->string('physical_location')->nullable();
-            $table->string('bio')->nullable();
+            $table->string('email')->unique(); //unique email
             $table->timestamp('email_verified_at')->nullable();
-            $table->unsignedBigInteger('roleId')->nullable();;
+            $table->unsignedBigInteger('roleId')->default(1);
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps(); //created_at and updated_at
 
             //Foreign Key
             $table->foreign('roleId')->references('id')->on('roles');

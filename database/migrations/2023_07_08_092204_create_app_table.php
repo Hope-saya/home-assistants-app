@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('job_postings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('title');
             $table->string('status');
-            $table->string('description');
+            $table->longText('description');
             $table->string('salary_range');
+            $table->string('location');
+            $table->string('contact');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
 
@@ -27,13 +29,17 @@ return new class extends Migration
 
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('job_id')->default(1);
+            $table->unsignedBigInteger('user_id')->default(1);
             $table->string('title');
-            $table->unsignedBigInteger('job_id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('endDate');
-            $table->string('documents');
-            $table->text('description');
-            $table->timestamps();
+            $table->integer('salary_range');
+            $table->string('location');
+            $table->string('contact');
+            $table->string('skillset');
+            $table->longText('about');
+            $table->string('availability');
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
             //Foreign keys
             $table->foreign('job_id')->references('id')->on('job_postings');
@@ -41,12 +47,19 @@ return new class extends Migration
         });
 
         Schema::create('reviews', function (Blueprint $table) {
+
+
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('message');
-            $table->timestamps();
+            $table->unsignedBigInteger('job_id')->default(1);
+            $table->unsignedBigInteger('user_id')->default(1);
+            $table->string('name');
+            $table->longText('comments');
+            $table->integer('star_rating');
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('job_id')->references('id')->on('job_postings')->onDelete('cascade');
         });
     }
 

@@ -13,7 +13,8 @@ class DashboardJobApplicationsController extends Controller
     public function index()
     {
         //
-        return view('dashboard.jobApplications.list-jobApplications');
+        $jobApplications = JobApplication::all();
+        return view('dashboard.jobApplications.list-jobApplications', compact('jobApplications'));
     }
 
     /**
@@ -31,24 +32,32 @@ class DashboardJobApplicationsController extends Controller
     public function store(Request $request)
     {
         //
-        $job_application = new JobApplication;
+        $jobApplication = new JobApplication;
         $request->validate([
-            'user_id' => 'required',
-            'job_id' => 'required',
-            'date' => 'required',
-            'documents' => 'required',
+            'title' => 'required',
+            'salary_range' => 'required',
+            'location' => 'required',
+            'contact' => 'required',
+            'skillset' => 'required',
+            'about' => 'required',
             'availability' => 'required',
 
 
-        ]);
-        $job_application->user_id = $request->input('user_id');
-        $job_application->job_id = $request->input('job_id');
-        $job_application->date = $request->input('date');
-        $job_application->documents = $request->input('documents');
-        $job_application->availability = $request->input('availability');
-        $job_application->save();
 
-        return redirect()->route('dashboards.jobApplications')->with('success', 'Job Application Added');
+        ]);
+        $jobApplication->title = $request->input('title');
+        $jobApplication->salary_range = $request->input('salary_range');
+        $jobApplication->location = $request->input('location');
+        $jobApplication->contact = $request->input('contact');
+        $jobApplication->skillset = $request->input('skillset');
+        $jobApplication->about = $request->input('about');
+        $jobApplication->availability = $request->input('availability');
+
+
+
+        $jobApplication->save();
+
+        return redirect()->route('home')->with('success', 'Job Application Added');
     }
 
     /**
@@ -57,7 +66,7 @@ class DashboardJobApplicationsController extends Controller
     public function show(string $id)
     {
         //
-        $job_application = JobApplication::findOrFail($id);
+        $jobApplication = JobApplication::findOrFail($id);
     }
 
     /**
@@ -75,21 +84,30 @@ class DashboardJobApplicationsController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        $job_application = JobApplication::findOrFail($id);
+        $jobApplication = new JobApplication;
         $request->validate([
-            'user_id' => 'required',
-            'job_id' => 'required',
-            'date' => 'required',
-            'documents' => 'required',
+            'title' => 'required',
+            'salary_range' => 'required',
+            'location' => 'required',
+            'contact' => 'required',
+            'skillset' => 'required',
+            'about' => 'required',
             'availability' => 'required',
-        ]);
 
-        $job_application->user_id = $request->input('user_id');
-        $job_application->job_id = $request->input('job_id');
-        $job_application->date = $request->input('date');
-        $job_application->documents = $request->input('documents');
-        $job_application->availability = $request->input('availability');
-        $job_application->save();
+
+
+        ]);
+        $jobApplication->title = $request->input('title');
+        $jobApplication->salary_range = $request->input('salary_range');
+        $jobApplication->location = $request->input('location');
+        $jobApplication->contact = $request->input('contact');
+        $jobApplication->skillset = $request->input('skillset');
+        $jobApplication->about = $request->input('about');
+        $jobApplication->availability = $request->input('availability');
+
+
+
+        $jobApplication->save();
 
         return redirect()->route('dashboards.jobApplications')->with('success', 'Job Application Updated');
     }
@@ -100,6 +118,6 @@ class DashboardJobApplicationsController extends Controller
     public function destroy(string $id)
     {
         //
-        $job_application = JobApplication::findOrFail($id);
+        $jobApplication = JobApplication::findOrFail($id);
     }
 }

@@ -11,7 +11,7 @@
             <p class="card-description">
               Post A Job
             </p>
-            <form class="forms-sample" method="POST" action="{{ route('jobPostings.store') }}">
+            <form class="forms-sample" method="Post" action="{{ route('jobPostings.store') }}">
               @csrf>
               <div class="row">
                 <div class="col-6">
@@ -45,6 +45,20 @@
                       </select>
                     </div>
                 </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="location">location</label>
+                    <input type="text" class="form-control" id="location" name="location" placeholder="">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="contact">Contact</label>
+                    <input type="text" class="form-control" id="contact" name="contact" placeholder="">
+                  </div>
               </div>
              
               

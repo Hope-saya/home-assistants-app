@@ -7,7 +7,7 @@
 <div class="col-lg-6 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">reviews</h4>
+        <h4 class="card-title">Users</h4>
         <p class="card-description">
           Add class <code>.table-hover</code>
         </p>
@@ -17,24 +17,24 @@
               <tr>
                 <th>ID</th>
                 <th>name</th>
-                <th>comments</th>
-                <th>star_rating</th>
-               
+                <th>email</th>
+                <th>password</th>
+                <th>Date Joined</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($reviews as $review)
+              @foreach($users as $user)
               <tr>
-               <td>{{$review->id}}</td>
-                <td>{{$review->name}}</td>
-                <td>{{$review->comments}}</td>
-                <td>{{$review->star_rating}}</td>
+               <td>{{$user->id}}</td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->email}}</td>
+                <td>{{$user->password}}</td>
             
-                <td>{{ date('Y-m-d', strtotime($review->created_at)) }}</td>
+                <td>{{ date('Y-m-d', strtotime($user->created_at)) }}</td>
                 <td>
-                  <a href="reviews/{{$review->id}}" class="btn btn-primary">Show</a>
-                  <a href="reviews/{{$review->id}}/edit" class="btn btn-primary">Edit</a>
-                  <form action="reviews/{{$review->id}}" method="post" class="d-inline">
+                  <a href="users/{{$user->id}}" class="btn btn-primary">Show</a>
+                  <a href="users/{{$user->id}}/edit" class="btn btn-primary">Edit</a>
+                  <form action="users/{{$user->id}}" method="post" class="d-inline">
                       {{ csrf_field() }}
                       @method('DELETE')
                       <button class="btn btn-danger" type="submit">Delete</button>

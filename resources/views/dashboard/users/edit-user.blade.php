@@ -11,8 +11,10 @@
             <p class="card-description">
               Basic form elements
             </p>
-            <form class="forms-sample" method="POST" action="{{ route('users.store') }}">
-              @csrf
+            
+              <form class="forms-sample" action="/users/{{$user->id}}" method="post">
+                @csrf
+                @method('PUT')
 
               <div class="row">
                 <div class="col-6">

@@ -6,8 +6,8 @@
     <div class="container pt-17 pb-19 pt-md-18 pb-md-17 text-center">
         <div class="row">
             <div class="col-lg-8 col-xl-7 col-xxl-6 mx-auto" data-cues="slideInDown" data-group="page-title">
-                <h1 class="display-1 text-white fs-60 mb-4 px-md-15 px-lg-0">We bring solutions to make life <span class="underline-3 style-2 yellow">easier</span></h1>
-                <p class="lead fs-24 text-white lh-sm mb-7 mx-md-13 mx-lg-10">We are a creative company that focuses on long term relationships with customers.</p>
+                <h1 class="display-1 text-white fs-60 mb-4 px-md-15 px-lg-0">We bring solutions to make life Easier <span class="underline-3 style-2 yellow">easier</span></h1>
+                <p class="lead fs-24 text-white lh-sm mb-7 mx-md-13 mx-lg-10">We are a company that focuses on long term relationships with customers.</p>
                 <div>
                     <a class="btn btn-white rounded mb-10 mb-xxl-5">Read More</a>
                 </div>
@@ -33,7 +33,7 @@
                 <div class="card shadow-lg">
                     <div class="card-body">
                         <img src="{{ asset('frontend/assets/img/icons/solid/edit.svg') }}" class="svg-inject icon-svg icon-svg-sm solid-mono text-fuchsia mb-3" alt="" />
-                        <h4>Content Marketing</h4>
+                        <h4>Babysitting</h4>
                         <p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras justo.</p>
                         <a href="#" class="more hover link-fuchsia">Learn More</a>
                     </div>
@@ -46,7 +46,7 @@
                 <div class="card shadow-lg">
                     <div class="card-body">
                         <img src="{{ asset('frontend/assets/img/icons/solid/team.svg') }}" class="svg-inject icon-svg icon-svg-sm solid-mono text-violet mb-3" alt="" />
-                        <h4>Social Engagement</h4>
+                        <h4>Cooking</h4>
                         <p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras justo.</p>
                         <a href="#" class="more hover link-violet">Learn More</a>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="card shadow-lg">
                     <div class="card-body">
                         <img src="{{ asset('frontend/assets/img/icons/solid/lamp.svg') }}" class="svg-inject icon-svg icon-svg-sm solid-mono text-orange mb-3" alt="" />
-                        <h4>Identity & Branding</h4>
+                        <h4>Cleaning</h4>
                         <p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras justo.</p>
                         <a href="#" class="more hover link-orange">Learn More</a>
                     </div>
@@ -72,7 +72,7 @@
                 <div class="card shadow-lg">
                     <div class="card-body">
                         <img src="{{ asset('frontend/assets/img/icons/solid/delivery-box.svg') }}" class="svg-inject icon-svg icon-svg-sm solid-mono text-green mb-3" alt="" />
-                        <h4>Product Design</h4>
+                        <h4>All inclusive</h4>
                         <p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras justo.</p>
                         <a href="#" class="more hover link-green">Learn More</a>
                     </div>

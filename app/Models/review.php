@@ -9,11 +9,16 @@ class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['message', 'user_id'];
+    protected $fillable = ['comments', 'name',  'star_rating', 'user_id', 'job_id'];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function jobPosting()
+    {
+        return $this->belongsTo(JobPosting::class, 'job_id', 'id');
     }
 
     //properties

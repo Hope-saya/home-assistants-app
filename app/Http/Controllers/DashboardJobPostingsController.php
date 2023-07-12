@@ -13,7 +13,8 @@ class DashboardJobPostingsController extends Controller
     public function index()
     {
         //
-        return view('dashboard.jobPostings.list-jobPostings');
+        $jobPostings = JobPosting::all();
+        return view('dashboard.jobPostings.list-jobPostings', compact('jobPostings'));
     }
 
     /**
@@ -37,16 +38,20 @@ class DashboardJobPostingsController extends Controller
             'status' => 'required',
             'salary_range' => 'required',
             'description' => 'required',
+            'location' => 'required',
+            'contact' => 'required',
 
         ]);
         $jobPosting->title = $request->input('title');
         $jobPosting->status = $request->input('status');
         $jobPosting->salary_range = $request->input('salary_range');
         $jobPosting->description = $request->input('description');
+        $jobPosting->location = $request->input('location');
+        $jobPosting->contact = $request->input('contact');
         $jobPosting->save();
 
 
-        return redirect()->route('dashboards.jobPostings')->with('success', 'Job Posting Added');
+        return redirect()->route('home')->with('success', 'Job Posting Added');
     }
 
     /**
@@ -64,6 +69,8 @@ class DashboardJobPostingsController extends Controller
     public function edit(string $id)
     {
         //
+        $jobPosting = JobPosting::findOrFail($id);
+
         return view('dashboard.jobPostings.edit-jobPosting');
     }
 
@@ -79,12 +86,16 @@ class DashboardJobPostingsController extends Controller
             'status' => 'required',
             'salary_range' => 'required',
             'description' => 'required',
+            'location' => 'required',
+            'contact' => 'required',
 
         ]);
         $jobPosting->title = $request->input('title');
         $jobPosting->status = $request->input('status');
         $jobPosting->salary_range = $request->input('salary_range');
         $jobPosting->description = $request->input('description');
+        $jobPosting->location = $request->input('location');
+        $jobPosting->contact = $request->input('contact');
         $jobPosting->save();
 
         return redirect()->route('dashboards.jobPostings')->with('success', 'Job Posting Updated');
@@ -96,9 +107,12 @@ class DashboardJobPostingsController extends Controller
     public function destroy(string $id)
     {
         //
-        $jobPosting = JobPosting::findOrFail($id);
-        $jobPosting->delete();
-
-        return redirect()->route('dashboards.jobPostings')->with('success', 'Job Posting Deleted');
+        $jobPosting = jobPosting::find($id);
+        if ($jobPosting) {
+            $jobPosting->delete();
+            return redirect()->route('dashboards.jobPostings')->with('success', 'Job Posting Deleted');
+        } else {
+            return redirect('dashboards.jobPostings')->with('status', 'jobPosting not found');
+        }
     }
 }

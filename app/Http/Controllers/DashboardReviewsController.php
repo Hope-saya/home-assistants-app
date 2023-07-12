@@ -13,7 +13,9 @@ class DashboardReviewsController extends Controller
     public function index()
     {
         //
-        return view('dashboard.reviews.list-reviews');
+        $reviews = Review::all();
+
+        return view('dashboard.reviews.list-reviews', compact('reviews'));
     }
 
     /**
@@ -33,15 +35,17 @@ class DashboardReviewsController extends Controller
         //
         $review = new Review;
         $request->validate([
-            'message' => 'required',
-            'user_id' => 'required',
+            'comments' => 'required',
+            'name' => 'required',
+            'star_rating' => 'required',
 
         ]);
-        $review->message = $request->input('message');
-        $review->user_id = $request->input('user_id');
+        $review->comments = $request->input('comments');
+        $review->name = $request->input('name');
+        $review->star_rating = $request->input('star_rating');
         $review->save();
 
-        return redirect()->route('dashboards.reviews')->with('success', 'Review Added');
+        return redirect()->route('home')->with('success', 'Review Added');
     }
 
     /**
@@ -71,12 +75,13 @@ class DashboardReviewsController extends Controller
         //
         $review = Review::findOrFail($id);
         $request->validate([
-            'message' => 'required',
-            'user_id' => 'required',
-
+            'comments' => 'required',
+            'name' => 'required',
+            'star_rating' => 'required',
         ]);
-        $review->message = $request->input('message');
-        $review->user_id = $request->input('user_id');
+        $review->comments = $request->input('comments');
+        $review->name = $request->input('name');
+        $review->star_rating = $request->input('star_rating');
         $review->save();
 
         return redirect()->route('dashboards.reviews')->with('success', 'Review Updated');
