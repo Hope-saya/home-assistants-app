@@ -10,15 +10,22 @@
 </head>
 
 <body>
-    {{-- @include ('partials.dashboard._sidebar') --}}
-    @include ('partials.dashboard._navbar')
-
 
     <div class="container-scroller">
-        @yield('content')
+        @include ('partials.dashboard._navbar')
+        <div class="container-fluid page-body-wrapper">
+
+            @include ('partials.dashboard._sidebar')
+
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    @yield('content')
+                </div>
+                @include ('partials.dashboard._footer')
+            </div> 
+        </div>
     </div>
 
-    @include ('partials.dashboard._footer')
     @include ('partials.dashboard.js')
 
 </body>
