@@ -80,9 +80,6 @@
                     <td >
                       {{$jobApplication->about}}
                     </td>
-                    <td >
-                      {{$jobApplication->availability}}
-                    </td>
                     <td>{{ date('Y-m-d', strtotime($jobApplication->created_at)) }}</td>
                     <td>
                       <a href="jobApplications/{{$jobApplication->id}}" class="btn btn-primary">Show</a>

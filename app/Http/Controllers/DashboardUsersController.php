@@ -53,16 +53,16 @@ class DashboardUsersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(user $user)
     {
         //
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($user);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(user $user)
     {
         //
         return view('dashboard.users.edit-user');

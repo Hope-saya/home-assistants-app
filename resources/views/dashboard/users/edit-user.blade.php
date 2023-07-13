@@ -7,14 +7,15 @@
       <div class="col-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Basic form elements</h4>
+            <h2 class="card-title">Edit A User</h2>
             <p class="card-description">
-              Basic form elements
+             
             </p>
+           
+            <form class="forms-sample" method="POST" action="{{ route('users.store') }}">
             
-              <form class="forms-sample" action="/users/{{$user->id}}" method="post">
-                @csrf
-                @method('PUT')
+              
+              @csrf
 
               <div class="row">
                 <div class="col-6">
