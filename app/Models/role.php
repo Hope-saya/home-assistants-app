@@ -10,17 +10,14 @@ class Role extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['role'];
+    protected $fillable = [
+        'name',
+        'description'
+    ];
 
     public function users()
     {
-        return $this->hasMany(user::class);
+        return $this->hasMany(User::class);
     }
-
-
-    //properties
-    protected $table = 'roles';
-    protected $primaryKey = 'id'; // eloquent always assumes id as default primary key
-    //array that specifies which fields can be filled in from this app from the user interface
 
 }

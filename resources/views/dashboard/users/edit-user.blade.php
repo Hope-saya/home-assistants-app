@@ -8,26 +8,23 @@
         <div class="card">
           <div class="card-body">
             <h2 class="card-title">Edit A User</h2>
-            <p class="card-description">
-             
+            <p class="card-description"> 
             </p>
            
-            <form class="forms-sample" method="POST" action="{{ route('users.store') }}">
-            
-              
+            <form class="forms-sample" method="POST" action="{{ route('users.update', $user->id) }}">
               @csrf
 
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                    <input type="text" class="form-control" id="name" value="{{ $user->name }}" name="name" placeholder="Name">
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group">
                     <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    <input type="email" class="form-control" id="email" value="{{ $user->email }}" name="email" placeholder="Email">
                   </div>
                 </div>
               </div>

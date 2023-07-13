@@ -29,8 +29,8 @@ return new class extends Migration
 
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('job_id')->default(1);
-            $table->unsignedBigInteger('user_id')->default(1);
+            $table->unsignedBigInteger('job_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->integer('salary_range');
             $table->string('location');
@@ -50,16 +50,16 @@ return new class extends Migration
 
 
             $table->id();
-            $table->unsignedBigInteger('job_id')->default(1);
-            $table->unsignedBigInteger('user_id')->default(1);
+            $table->unsignedBigInteger('job_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->longText('comments');
             $table->integer('star_rating');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('job_id')->references('id')->on('job_postings')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('job_id')->references('id')->on('job_postings');
         });
     }
 

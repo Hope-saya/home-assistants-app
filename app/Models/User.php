@@ -43,81 +43,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function role()
 
+    public function roles()
     {
         return $this->belongsTo(Role::class, 'roleId', 'id');
     }
 }
-
-
-//the relationships now
-
-/*
-
-class allUserTable extends Model
-{
-    use HasFactory;
-    public function role()
-    {
-        return $this->hasOne(Role::class);
-    }
-
-    public function jobApplications()
-    {
-        return $this->hasMany(JobApplication::class);
-    }
-
-    public function jobPostings()
-    {
-        return $this->hasMany(JobPosting::class);
-    }
-
-    public function reviews()
-    {
-        return $this->hasMany(Review::class);
-    }
-}
-
-class Role extends Model
-{
-    public function users()
-    {
-        return $this->hasMany(user::class);
-    }
-}
-
-class JobApplication extends Model
-{
-    public function user()
-    {
-        return $this->belongsTo(user::class);
-    }
-
-    public function jobPosting()
-    {
-        return $this->belongsTo(JobPosting::class);
-    }
-}
-
-class JobPosting extends Model
-{
-    public function user()
-    {
-        return $this->belongsTo(Alluser::class);
-    }
-
-    public function jobApplications()
-    {
-        return $this->hasMany(JobApplication::class);
-    }
-}
-
-class Review extends Model
-{
-    public function user()
-    {
-        return $this->belongsTo(user::class);
-    }
-}
-*/

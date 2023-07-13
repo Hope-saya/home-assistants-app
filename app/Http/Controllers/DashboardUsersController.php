@@ -13,7 +13,8 @@ class DashboardUsersController extends Controller
     public function index()
     {
         //
-        $users = User::all();
+        $users = User::with('roles')->get();
+
         return view('dashboard.users.list-users', compact('users'));
     }
 
@@ -62,10 +63,12 @@ class DashboardUsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(user $user)
+    public function edit($id)
     {
         //
-        return view('dashboard.users.edit-user');
+        $user = User::with('roles')->find($id);
+
+        return view('dashboard.users.edit-user', compact('user'));
     }
 
     /**

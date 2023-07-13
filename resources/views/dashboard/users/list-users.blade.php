@@ -1,55 +1,46 @@
 @extends('layouts.dashboard');
 
 @section('content')
-<div class="main-panel">
-    <div class="content-wrapper">
-        
-<div class="col-lg-6 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Users</h4>
-        <p class="card-description">
-          Add class <code>.table-hover</code>
-        </p>
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
+
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Users List</h4>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Full Name</th>
+              <th>Email</th>
+              <th>Date Joined</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @foreach ($users as $user)
               <tr>
-                <th>ID</th>
-                <th>name</th>
-                <th>email</th>
-                <th>password</th>
-                <th>Date Joined</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($users as $user)
-              <tr>
-               <td>{{$user->id}}</td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->password}}</td>
-            
+                <td>{{ $user->id }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
                 <td>{{ date('Y-m-d', strtotime($user->created_at)) }}</td>
                 <td>
-                  <a href="users/{{$user->id}}" class="btn btn-primary">Show</a>
-                  <a href="users/{{$user->id}}/edit" class="btn btn-primary">Edit</a>
+                  <a href="users/{{$user->id}}" class="btn btn-primary btn-sm">Show</a>
+                  <a href="users/{{$user->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
                   <form action="users/{{$user->id}}" method="post" class="d-inline">
                       {{ csrf_field() }}
                       @method('DELETE')
-                      <button class="btn btn-danger" type="submit">Delete</button>
+                      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                   </form>
-                  </td>
+                </td>
               </tr>
-             @endforeach 
-            </tbody>
-          </table>
-        </div>
+            @endforeach
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-    </div>
 </div>
-
 
 @endsection

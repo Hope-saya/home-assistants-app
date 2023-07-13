@@ -34,16 +34,13 @@ Route::prefix('/dashboards')->middleware(['auth', 'verified'])->group(function (
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-
     //Job Postings
-
     Route::get('/jobPostings', [DashboardJobPostingsController::class, 'index'])->name('jobPostings.list');
     Route::get('/jobPostings/create', [DashboardJobPostingsController::class, 'create'])->name('jobPostings.add');
     Route::post('/jobPostings/create', [DashboardJobPostingsController::class, 'store'])->name('jobPostings.store');
     Route::get('/jobPostings/{id}/edit', [DashboardJobPostingsController::class, 'edit'])->name('jobPostings.edit');
     Route::patch('/jobPostings/{id}/edit', [DashboardJobPostingsController::class, 'update'])->name('jobPostings.update');
     Route::delete('/jobPostings/{id}/edit', [DashboardJobPostingsController::class, 'destroy'])->name('jobPostings.delete');
-
 
     //Job Applications
     Route::get('/jobApplications', [DashboardJobApplicationsController::class, 'index'])->name('jobApplications.list');
@@ -53,8 +50,6 @@ Route::prefix('/dashboards')->middleware(['auth', 'verified'])->group(function (
     Route::patch('/jobApplications/{id}/edit', [DashboardJobApplicationsController::class, 'update'])->name('jobApplications.update');
     Route::delete('/jobApplications/{id}/edit', [DashboardJobApplicationsController::class, 'destroy'])->name('jobApplications.delete');
 
-
-
     //reviews
     Route::get('/reviews', [DashboardReviewsController::class, 'index'])->name('reviews.list');
     Route::get('/reviews/create', [DashboardReviewsController::class, 'create'])->name('reviews.add');
@@ -62,7 +57,6 @@ Route::prefix('/dashboards')->middleware(['auth', 'verified'])->group(function (
     Route::get('/reviews/{id}/edit', [DashboardReviewsController::class, 'edit'])->name('reviews.edit');
     Route::patch('/reviews/{id}/edit', [DashboardReviewsController::class, 'update'])->name('reviews.update');
     Route::delete('/reviews/{id}/edit', [DashboardReviewsController::class, 'destroy'])->name('reviews.delete');
-
 
     //users
     Route::get('/users', [DashboardUsersController::class, 'index'])->name('users.list');
