@@ -18,7 +18,21 @@
       <div class="navbar-menu-wrapper d-flex align-items-top"> 
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
+            @php
+              $currentTime = date('H:i');
+              $morningStart = '00:00';
+              $afernoonStart = '12:00';
+              $eveningStart = '18:00';
+              
+              if($currentTime >= $morningStart && $currentTime < $afernoonStart){
+                  $greeting = 'Good Morning';
+              }elseif ($currentTime >= $afernoonStart && $currentTime < $eveningStart) {
+                  $greeting = 'Good Afternoon';
+              } else {
+                  $greeting = 'Good Evening';
+              }
+            @endphp
+            <h1 class="welcome-text">{{ $greeting }}, <span class="text-black fw-bold"> {{ Auth::user()->name }}</span></h1>
             <h3 class="welcome-sub-text">Your performance summary this week </h3>
           </li>
         </ul>
