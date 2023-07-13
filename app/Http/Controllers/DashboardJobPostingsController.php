@@ -71,7 +71,7 @@ class DashboardJobPostingsController extends Controller
         //
         $jobPosting = JobPosting::findOrFail($id);
 
-        return view('dashboard.jobPostings.edit-jobPosting');
+        return view('dashboard.jobPostings.edit-jobPosting', compact('jobPosting'));
     }
 
     /**
