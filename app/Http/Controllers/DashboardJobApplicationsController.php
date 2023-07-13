@@ -13,7 +13,7 @@ class DashboardJobApplicationsController extends Controller
     public function index()
     {
         //
-        $jobApplications = JobApplication::all();
+        $jobApplications = JobApplication::with('jobPosting')->get();
         return view('dashboard.jobApplications.list-jobApplications', compact('jobApplications'));
     }
 
@@ -72,10 +72,11 @@ class DashboardJobApplicationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         //
-        return view('dashboard.jobApplications.edit-jobApplication');
+        $jobApplication = JobApplication::with('jobPosting')->find($id);
+        return view('dashboard.jobApplications.edit-jobApplication', compact('jobApplication'));
     }
 
     /**

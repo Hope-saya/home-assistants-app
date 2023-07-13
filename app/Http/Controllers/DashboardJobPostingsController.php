@@ -13,7 +13,8 @@ class DashboardJobPostingsController extends Controller
     public function index()
     {
         //
-        $jobPostings = JobPosting::all();
+        $jobPostings = JobPosting::with('user')->get();
+
         return view('dashboard.jobPostings.list-jobPostings', compact('jobPostings'));
     }
 
@@ -66,10 +67,10 @@ class DashboardJobPostingsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         //
-        $jobPosting = JobPosting::findOrFail($id);
+        $jobPosting = JobPosting::with('user')->find($id);
 
         return view('dashboard.jobPostings.edit-jobPosting', compact('jobPosting'));
     }

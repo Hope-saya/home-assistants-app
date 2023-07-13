@@ -1,18 +1,14 @@
 @extends('layouts.dashboard');
 
 @section('content')
-<div class="main-panel">
-    <div class="content-wrapper">
-       
+
       <div class="col-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Basic form elements</h4>
-            <p class="card-description">
-              Basic form elements
-            </p>
+            <h4 class="card-title">Add a Review</h4>
+           
             <form class="forms-sample" method="POST" action="{{ route('reviews.store') }}">
-              @csrf>
+              @csrf
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="name">

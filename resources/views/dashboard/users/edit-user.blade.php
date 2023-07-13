@@ -13,7 +13,7 @@
            
             <form class="forms-sample" method="POST" action="{{ route('users.update', $user->id) }}">
               @csrf
-
+              @method('PATCH')
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">

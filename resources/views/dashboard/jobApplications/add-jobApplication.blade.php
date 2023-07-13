@@ -8,11 +8,9 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Post A Job Application</h4>
-            <p class="card-description">
-              Post A Job Application
-            </p>
+         
             <form class="forms-sample" method="POST" action="{{ route('jobApplications.store') }}">
-              @csrf>
+              @csrf
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">

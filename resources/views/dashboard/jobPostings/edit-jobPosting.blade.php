@@ -1,29 +1,26 @@
 @extends('layouts.dashboard');
 
 @section('content')
-<div class="main-panel">
-    <div class="content-wrapper">
-       
+
       <div class="col-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Post A Job</h4>
-            <p class="card-description">
-              Post A Job
-            </p>
-            <form class="forms-sample" method="POST" action="{{ route('jobPostings.store') }}">
+           
+            <form class="forms-sample" method="POST" action="{{ route('jobPostings.update',$jobPosting->id) }}">
               @csrf>
+              @method('PATCH')
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">
                     <label for="title">Job Title</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Job title">
+                    <input type="text" class="form-control" id="title" value="{{ $jobPosting->title }}" name="title" placeholder="Job title">
                   </div>
                 </div>
                   <div class="col-6">
                   <div class="form-group">
                     <label for="salary_range">Salary Range</label>
-                    <input type="text" class="form-control" id="salary_range" name="salary_range" placeholder="">
+                    <input type="text" class="form-control" id="salary_range" value="{{ $jobPosting->salary_range }}" name="salary_range" placeholder="">
                   </div>
                 </div>
               </div>
@@ -32,13 +29,13 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="description">description</label>
-                    <input type="text" class="form-control" id="description" name="description" placeholder="">
+                    <input type="text" class="form-control" id="description" value="{{ $jobPosting->description }}"name="description" placeholder="">
                   </div>
                 </div>
                   <div class="col-6">
                   <div class="form-group">
                     <label for="status">Status</label>
-                      <select class="form-control" id="location" name="status">
+                      <select class="form-control" id="status" value="{{ $jobPosting->status }}"name="status">
                         <option>Pending</option>
                         <option>Open</option>
                         <option>Closed</option>
@@ -51,13 +48,13 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="location">location</label>
-                    <input type="text" class="form-control" id="location" name="location" placeholder="">
+                    <input type="text" class="form-control" id="location" value="{{ $jobPosting->location }}" name="location" placeholder="">
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group">
                     <label for="contact">Contact</label>
-                    <input type="text" class="form-control" id="contact" name="contact" placeholder="">
+                    <input type="text" class="form-control" id="contact" value="{{ $jobPosting->contact }}" name="contact" placeholder="">
                   </div>
               </div>
              
