@@ -58,7 +58,7 @@ class DashboardRolesController extends Controller
     public function edit(string $id)
     {
         //
-        return view('dashboard.users.edit-user');
+        return view('dashboard.roles.edit-user');
     }
 
     /**

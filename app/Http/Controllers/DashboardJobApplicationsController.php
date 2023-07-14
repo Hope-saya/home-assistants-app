@@ -57,7 +57,7 @@ class DashboardJobApplicationsController extends Controller
 
         $jobApplication->save();
 
-        return redirect()->route('home')->with('success', 'Job Application Added');
+        return redirect()->route('jobApplications.list')->with('success', 'Job Application Added');
     }
 
     /**
@@ -110,7 +110,7 @@ class DashboardJobApplicationsController extends Controller
 
         $jobApplication->save();
 
-        return redirect()->route('dashboards.jobApplications')->with('success', 'Job Application Updated');
+        return redirect()->route('jobApplications.list')->with('success', 'Job Application Updated');
     }
 
     /**

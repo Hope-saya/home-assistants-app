@@ -37,16 +37,22 @@
                     <td>{{ $jobPosting->contact }}</td>
                     <td>{{ date('Y-m-d', strtotime($jobPosting->created_at)) }}</td>
                     <td>
-                      <a href="jobPostings/{{$jobPosting->id}}" class="btn btn-primary btn-sm">Show</a>
+                     
                       <a href="jobPostings/{{$jobPosting->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                      <form action="jobPostings/{{$jobPosting->id}}/destroy" method="post" class="d-inline">
+                     
+   
+                      <form action="jobPostings/{{$jobPosting->id}}/destroy" method="post" class="d-inline" onclick="return confirm('Are you sure you want to delete this job posting?')">
+                        <input type="hidden" name="_method" value="DELETE">
                           {{ csrf_field() }}
-                          @method('DELETE')
-                          <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                          
+                          {{-- @method('DELETE') --}}
+                          {{-- <input type="number" value="{{ $jobPosting->id }}" name="jobPostingId" hidden> --}}
+                          <button class="btn btn-danger btn-sm" value="Delete User" type="submit"> Delete </button>
                       </form>
                       </td> 
                   </tr>
                  @endforeach
+                
                 </tbody>
               </table>
             </div>

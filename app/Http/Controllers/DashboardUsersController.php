@@ -48,7 +48,7 @@ class DashboardUsersController extends Controller
         $user->save();
 
         //Ive used the home route here coz it works. for
-        return redirect()->route('home')->with('success', 'User Added');
+        return redirect()->route('users.list')->with('success', 'User Added');
     }
 
     /**
@@ -79,20 +79,21 @@ class DashboardUsersController extends Controller
         //
         $user = User::findOrFail($id);
 
+
         //Fields are required before submission
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
+
         ]);
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+
 
         $user->save();
 
-        return redirect()->route('dashboards.users')->with('success', 'User Updated');
+        return redirect()->route('users.list')->with('success', 'User Updated');
     }
 
     /**
@@ -102,9 +103,14 @@ class DashboardUsersController extends Controller
     {
         //
         $user = User::findOrFail($id);
-
+        if ($user) {
+            $user->delete();
+            return redirect()->route('users.list')->with('success', 'User Deleted');
+        } else {
+            return redirect()->route('users.list')->with('error', 'User Not Found');
+        }
         $user->delete();
 
-        return redirect()->route('dashboards.users')->with('success', 'User Deleted');
+        return redirect()->route('users.list')->with('success', 'User Deleted');
     }
 }

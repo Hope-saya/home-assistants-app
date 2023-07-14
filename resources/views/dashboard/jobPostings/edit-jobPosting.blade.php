@@ -8,7 +8,7 @@
             <h4 class="card-title">Post A Job</h4>
            
             <form class="forms-sample" method="POST" action="{{ route('jobPostings.update',$jobPosting->id) }}">
-              @csrf>
+              @csrf
               @method('PATCH')
               <div class="row">
                 <div class="col-6">

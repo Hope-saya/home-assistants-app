@@ -40,9 +40,9 @@
                     <td>{{ $jobApplication->about }}</td>
                     <td>{{ date('Y-m-d', strtotime($jobApplication->created_at)) }}</td>
                     <td>
-                      <a href="jobApplications/{{$jobApplication->id}}" class="btn btn-primary btn-sm">Show</a>
+                    
                       <a href="jobApplications/{{$jobApplication->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                      <form action="jobApplications/{{$jobApplication->id}}" method="post" class="d-inline">
+                      <form action="jobApplications/{{$jobApplication->id}}/destroy" method="post" class="d-inline" onclick="return confirm('Are you sure you want to delete this job Application?')">
                           {{ csrf_field() }}
                           @method('DELETE')
                           <button class="btn btn-danger btn-sm" type="submit">Delete</button>

@@ -32,7 +32,7 @@
                             </li>
  
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Projects</a>
+                                <a class="nav-link" href="#">House Vacancies</a>
                             </li>
                         </ul>
                         <!-- /.navbar-nav -->
@@ -41,10 +41,14 @@
                     <div class="w-100 order-3 order-lg-2 d-lg-flex offcanvas-body">
                         <ul class="navbar-nav me-lg-auto">
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#">Blogs</a>
+                                <a class="nav-link" href="#">House Assistants</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="{{ route('login') }}">Auth</a>
+                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                                <!--/.dropdown-menu -->
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{{ route('register') }}">Register</a>
                                 <!--/.dropdown-menu -->
                             </li>
 

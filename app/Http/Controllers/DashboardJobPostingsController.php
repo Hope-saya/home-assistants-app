@@ -52,7 +52,7 @@ class DashboardJobPostingsController extends Controller
         $jobPosting->save();
 
 
-        return redirect()->route('home')->with('success', 'Job Posting Added');
+        return redirect()->route('jobPostings.list')->with('success', 'Job Posting Added');
     }
 
     /**
@@ -99,7 +99,7 @@ class DashboardJobPostingsController extends Controller
         $jobPosting->contact = $request->input('contact');
         $jobPosting->save();
 
-        return redirect()->route('dashboards.jobPostings')->with('success', 'Job Posting Updated');
+        return redirect()->route('jobPostings.list')->with('success', 'Job Posting Updated');
     }
 
     /**
@@ -111,9 +111,9 @@ class DashboardJobPostingsController extends Controller
         $jobPosting = jobPosting::find($id);
         if ($jobPosting) {
             $jobPosting->delete();
-            return redirect()->route('dashboards.jobPostings')->with('success', 'Job Posting Deleted');
+            return redirect()->route('jobPostings.list')->with('success', 'Job Posting Deleted');
         } else {
-            return redirect('dashboards.jobPostings')->with('status', 'jobPosting not found');
+            return redirect('jobPostings.list')->with('status', 'jobPosting not found');
         }
     }
 }

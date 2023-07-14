@@ -26,12 +26,13 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ date('Y-m-d', strtotime($user->created_at)) }}</td>
                 <td>
-                  <a href="users/{{$user->id}}" class="btn btn-primary btn-sm">Show</a>
+                  
                   <a href="users/{{$user->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                  <form action="users/{{$user->id}}" method="post" class="d-inline">
-                      {{ csrf_field() }}
-                      @method('DELETE')
-                      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                  <form action="{{ route('users.delete', $user->id) }}" method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                    @csrf
+                    @method('DELETE')
+            
+                    <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                   </form>
                 </td>
               </tr>

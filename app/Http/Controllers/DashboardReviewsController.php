@@ -45,7 +45,7 @@ class DashboardReviewsController extends Controller
         $review->star_rating = $request->input('star_rating');
         $review->save();
 
-        return redirect()->route('home')->with('success', 'Review Added');
+        return redirect()->route('dashboard.reviews')->with('success', 'Review Added');
     }
 
     /**

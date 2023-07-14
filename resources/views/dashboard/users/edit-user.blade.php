@@ -1,15 +1,12 @@
 @extends('layouts.dashboard');
 
 @section('content')
-<div class="main-panel">
-    <div class="content-wrapper">
-       
+
       <div class="col-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
             <h2 class="card-title">Edit A User</h2>
-            <p class="card-description"> 
-            </p>
+          
            
             <form class="forms-sample" method="POST" action="{{ route('users.update', $user->id) }}">
               @csrf
@@ -28,7 +25,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
+              {{-- <div class="row">
                 <div class="col-6">
                   <div class="form-group">
                     <label for="password">Password</label>
@@ -38,10 +35,10 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="password_confirmation">Password </label>
-                    <input type="password" class="form-control" id="password_confimation" name="password_confirmation" placeholder="Password">
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Password">
                   </div>
                 </div>
-              </div>
+              </div> --}}
 
               <button type="submit" class="btn btn-primary me-2">Submit</button>
               <button class="btn btn-light">Cancel</button>
