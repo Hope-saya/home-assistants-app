@@ -8,7 +8,8 @@ use App\Http\Controllers\DashboardJobApplicationsController;
 use App\Http\Controllers\DashboardReviewsController;
 use App\Http\Controllers\DashboardUsersController;
 use App\Http\Controllers\DashboardRolesController;
-
+use App\Http\Controllers\jobPostingsBlogController;
+use App\Http\Controllers\jobApplicationsBlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontendController::class, 'homePage'])->name('home');
+Route::get('/jobPostingsBlog', [JobPostingsBlogController::class, 'index'])->name('jobPostingsBlog');
+Route::get('/jobApplicationsBlog', [JobApplicationsBlogController::class, 'index'])->name('jobApplicationsBlog');
+
+
 
 //Users
 Route::get('/users', [DashboardUsersController::class, 'index'])->name('users.list');

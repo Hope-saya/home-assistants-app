@@ -40,7 +40,7 @@ class DashboardJobPostingsController extends Controller
             'salary_range' => 'required',
             'description' => 'required',
             'location' => 'required',
-            'contact' => 'required',
+            'phone' => 'required',
 
         ]);
         $jobPosting->title = $request->input('title');
@@ -48,7 +48,7 @@ class DashboardJobPostingsController extends Controller
         $jobPosting->salary_range = $request->input('salary_range');
         $jobPosting->description = $request->input('description');
         $jobPosting->location = $request->input('location');
-        $jobPosting->contact = $request->input('contact');
+        $jobPosting->phone = $request->input('phone');
         $jobPosting->save();
 
 

@@ -9,17 +9,15 @@ class JobPosting extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'status', 'salary_range', 'description', 'location', 'contact', 'user_id', 'job_id'];
+    protected $fillable = ['title', 'status', 'salary_range', 'description', 'location', 'phone',];
 
     public function user()
     {
         return $this->belongsTo(user::class, 'user_id', 'id');
     }
 
-    public function jobApplications()
-    {
-        return $this->hasMany(JobApplication::class, 'job_id', 'id');
-    }
+
+
 
     public function reviews()
     {

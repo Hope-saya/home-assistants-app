@@ -21,18 +21,18 @@
                 <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
                     <div class="offcanvas-header mx-lg-auto order-0 order-lg-1 d-lg-flex px-lg-15">
                         <a href="./index.html" class="transition-none d-none d-lg-flex"><img class="logo-dark" src="{{ asset('frontend/assets/img/logo-dark.png') }}" srcset="./assets/img/logo-dark@2x.png 2x" alt="" />
-                            <img class="logo-light" src="{{ asset('frontend/assets/img/logo-light.png') }}" srcset="{{ asset('frontend/assets/img/logo-light@2x.png 2x') }}" alt="" /></a>
-                        <h3 class="text-white fs-30 mb-0 d-lg-none">Sandbox</h3>
+                            <h2>HomeAid</h2>
+                        <h3 class="text-white fs-30 mb-0 d-lg-none">HomeAid</h3>
                         <button type="button" class="btn-close btn-close-white d-lg-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="w-100 order-1 order-lg-0 d-lg-flex offcanvas-body">
                         <ul class="navbar-nav ms-lg-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Home</a>
+                                <a class="nav-link" href="{{'home'}}">Home</a>
                             </li>
  
                             <li class="nav-item">
-                                <a class="nav-link" href="#">House Vacancies</a>
+                                <a class="nav-link" href="{{'jobPostingsBlog'}}">House Vacancies</a>
                             </li>
                         </ul>
                         <!-- /.navbar-nav -->
@@ -41,7 +41,7 @@
                     <div class="w-100 order-3 order-lg-2 d-lg-flex offcanvas-body">
                         <ul class="navbar-nav me-lg-auto">
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#">House Assistants</a>
+                                <a class="nav-link" href="{{'jobApplicationsBlog'}}">House Assistants</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="{{ route('login') }}">Login</a>

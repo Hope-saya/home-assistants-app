@@ -4,16 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JobApplication;
+use Illuminate\Support\Facades\Auth;
+
+$user = Auth::user();
+
+$id = Auth::id();
 
 class DashboardJobApplicationsController extends Controller
 {
+
+
+
+
     /**
+     * 
      * Display a listing of the resource.
      */
     public function index()
     {
         //
-        $jobApplications = JobApplication::with('jobPosting')->get();
+        $jobApplications = JobApplication::all(); // Fetch data from the jobApplications table
+
         return view('dashboard.jobApplications.list-jobApplications', compact('jobApplications'));
     }
 
@@ -41,6 +52,10 @@ class DashboardJobApplicationsController extends Controller
             'skillset' => 'required',
             'about' => 'required',
             'availability' => 'required',
+            'status' => 'required',
+
+            'phone' => 'required',
+
 
 
 
@@ -52,6 +67,9 @@ class DashboardJobApplicationsController extends Controller
         $jobApplication->skillset = $request->input('skillset');
         $jobApplication->about = $request->input('about');
         $jobApplication->availability = $request->input('availability');
+        $jobApplication->status = $request->input('status');
+
+        $jobApplication->phone = $request->input('phone');
 
 
 
@@ -75,7 +93,7 @@ class DashboardJobApplicationsController extends Controller
     public function edit($id)
     {
         //
-        $jobApplication = JobApplication::with('jobPosting')->find($id);
+        $jobApplication = JobApplication::with('user')->find($id);
         return view('dashboard.jobApplications.edit-jobApplication', compact('jobApplication'));
     }
 
@@ -94,6 +112,9 @@ class DashboardJobApplicationsController extends Controller
             'skillset' => 'required',
             'about' => 'required',
             'availability' => 'required',
+            'status' => 'required',
+
+            'phone' => 'required',
 
 
 
@@ -105,6 +126,10 @@ class DashboardJobApplicationsController extends Controller
         $jobApplication->skillset = $request->input('skillset');
         $jobApplication->about = $request->input('about');
         $jobApplication->availability = $request->input('availability');
+        $jobApplication->status = $request->input('status');
+
+        $jobApplication->phone = $request->input('phone');
+
 
 
 
@@ -119,6 +144,12 @@ class DashboardJobApplicationsController extends Controller
     public function destroy(string $id)
     {
         //
-        $jobApplication = JobApplication::findOrFail($id);
+        $jobApplication = jobApplication::find($id);
+        if ($jobApplication) {
+            $jobApplication->delete();
+            return redirect()->route('jobApplications.list')->with('success', 'Job Posting Deleted');
+        } else {
+            return redirect('jobApplications.list')->with('status', 'jobApplication not found');
+        }
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class FrontendController extends Controller
 {
     //
@@ -13,14 +14,17 @@ class FrontendController extends Controller
         return view('frontend.home');
     }
 
-    //Auth
-    public function signIn()
-    {
-    }
+    // //Auth
+    // public function jobPostingsBlog()
+    // {
 
-    public function signUp()
-    {
-    }
+    //     return view('frontend.jobPostingsBlog');
+    // }
+
+    // public function jobApplicationsBlog()
+    // {
+    //     return view('frontend.jobApplicationsBlog');
+    // }
     //Auth
 
     public function contactUs()

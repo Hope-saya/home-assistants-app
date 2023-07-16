@@ -25,6 +25,26 @@
                   </div>
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="phone">
+                  </div>
+                </div>
+                  <div class="col-6">
+                  <div class="form-group">
+                    <label for="status">Status</label>
+                      <select class="form-control" id="status" name="status">
+                        <option>Open to Work</option>
+                        <option>Hired </option>
+                      
+                      </select>
+                  
+                  </div>
+                </div>
+              </div>
              
               <div class="row">
                 <div class="col-6">

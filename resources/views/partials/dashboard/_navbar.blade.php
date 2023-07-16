@@ -8,11 +8,11 @@
         </div>
         <div>
           <a class="navbar-brand brand-logo" href="index.html">
-            <img src="{{ asset('dashboard/images/logo.svg') }}" alt="logo" />
+            <h2>HomeAid</h2>
           </a>
-          <a class="navbar-brand brand-logo-mini" href="index.html">
+          {{-- <a class="navbar-brand brand-logo-mini" href="index.html">
             <img src="{{ asset('dashboard/images/logo-mini.svg') }}" alt="logo" />
-          </a>
+          </a> --}}
         </div>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-top"> 
@@ -32,8 +32,8 @@
                   $greeting = 'Good Evening';
               }
             @endphp
-            <h1 class="welcome-text">{{ $greeting }}, <span class="text-black fw-bold"> {{ Auth::user()->name }}</span></h1>
-            <h3 class="welcome-sub-text">Your performance summary this week </h3>
+            <h1 class="welcome-text">{{ $greeting }}, <span class="text-black fw-bold"> {{ Auth::user()->name ?? 'Customer' }}</span></h1>
+            <h3 class="welcome-sub-text">Performance summary this week </h3>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -44,30 +44,20 @@
                 <p class="mb-0 font-weight-medium float-left">Select category</p>
               </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
+              <a href="{{'jobPostingsBlog'}}"class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Bootstrap Bundle </p>
-                  <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards</p>
+                  <p class="preview-subject ellipsis font-weight-medium text-dark">HomeOwners Blog </p>
+                  
                 </div>
               </a>
-              <a class="dropdown-item preview-item">
+              <a href="{{'jobApplicationsBlog'}}"class="dropdown-item preview-item">
                 <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Angular Bundle</p>
-                  <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular projects</p>
+                  <p class="preview-subject ellipsis font-weight-medium text-dark">HouseAssistants Blog</p>
+                  
                 </div>
               </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">VUE Bundle</p>
-                  <p class="fw-light small-text mb-0">Bundle of 6 Premium Vue Admin Dashboard</p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">React Bundle</p>
-                  <p class="fw-light small-text mb-0">Bundle of 8 Premium React Admin Dashboard</p>
-                </div>
-              </a>
+              
+              
             </div>
           </li>
           <li class="nav-item d-none d-lg-block">
@@ -167,11 +157,11 @@
               <img class="img-xs rounded-circle" src="{{ asset('dashboard/images/faces/face8.jpg') }}" alt="Profile image"> </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
-                <p class="mb-1 mt-3 font-weight-semibold">{{ Auth::user()->name }}</p>
-                <p class="fw-light text-muted mb-0">{{ Auth::user()->email }}</p>
+                <p class="mb-1 mt-3 font-weight-semibold">{{ Auth::user()->name ?? 'Admin'}}</p>
+                <p class="fw-light text-muted mb-0">{{ Auth::user()->email ?? 'admin.admin.com' }}</p>
               </div>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>My Profile</a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+            <form method="POST" action="{{route('logout')}}">@csrf <a class="bg-primary iq-sign-btn" type="submit" onclick="event.preventDefault(); this.closest('form').submit();" role="button"><i class="ri-login-box-line ml-2"></i>Sign Out</a></form>
             </div>
           </li>
         </ul>

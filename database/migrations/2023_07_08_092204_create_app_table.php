@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('job_postings', function (Blueprint $table) {
             $table->id();
+            //$table->string('profile_picture');
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('roleId')->default(1);
             $table->string('title');
             $table->string('status');
             $table->longText('description');
             $table->string('salary_range');
             $table->string('location');
-            $table->string('contact');
+            $table->string('phone');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
 
@@ -29,8 +31,8 @@ return new class extends Migration
 
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('job_id');
-            $table->unsignedBigInteger('user_id');
+            //$table->string('profile_picture');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('title');
             $table->integer('salary_range');
             $table->string('location');
@@ -38,20 +40,40 @@ return new class extends Migration
             $table->string('skillset');
             $table->longText('about');
             $table->string('availability');
+            $table->string('status');
+            $table->string('phone');
+
+
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
 
             //Foreign keys
-            $table->foreign('job_id')->references('id')->on('job_postings');
+
             $table->foreign('user_id')->references('id')->on('users');
         });
+
+        Schema::create('Hiring', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('job_id')->nullable();
+            $table->unsignedBigInteger('househelp_id')->nullable();
+            $table->string('status');
+            $table->string('document');
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('created_at')->nullable();
+
+            //Foreign keys
+            $table->foreign('househelp_id')->references('id')->on('job_applications');
+            $table->foreign('job_id')->references('id')->on('job_postings');
+        });
+
+
 
         Schema::create('reviews', function (Blueprint $table) {
 
 
             $table->id();
-            $table->unsignedBigInteger('job_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('job_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('name');
             $table->longText('comments');
             $table->integer('star_rating');

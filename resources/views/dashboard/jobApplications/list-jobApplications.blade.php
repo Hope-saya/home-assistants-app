@@ -42,10 +42,13 @@
                     <td>
                     
                       <a href="jobApplications/{{$jobApplication->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                      <form action="jobApplications/{{$jobApplication->id}}/destroy" method="post" class="d-inline" onclick="return confirm('Are you sure you want to delete this job Application?')">
+                      <form action="jobApplications/{{$jobApplication->id}}/destroy" method="post" class="d-inline" onclick="return confirm('Are you sure you want to delete this job posting?')">
+                        <input type="hidden" name="_method" value="DELETE">
                           {{ csrf_field() }}
-                          @method('DELETE')
-                          <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                          
+                          {{-- @method('DELETE') --}}
+                          {{-- <input type="number" value="{{ $jobApplication->id }}" name="jobApplicationId" hidden> --}}
+                          <button class="btn btn-danger btn-sm" value="Delete User" type="submit"> Delete </button>
                       </form>
                       </td>
                   </tr>

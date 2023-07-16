@@ -9,17 +9,16 @@ class JobApplication extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'salary_range', 'location', 'contact', 'skillset', 'about', 'availability', 'user_id', 'job_id'];
+    protected $fillable = ['title', 'salary_range', 'location', 'contact', 'skillset', 'about', 'availability', 'status', 'phone'];
 
     public function user()
     {
         return $this->belongsTo(user::class, 'user_id', 'id');
     }
 
-    public function jobPosting()
-    {
-        return $this->belongsTo(JobPosting::class, 'job_id', 'id');
-    }
+
+
+
 
     //properties
     protected $table = 'job_applications';

@@ -54,8 +54,8 @@
                 </div>
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="contact">Contact</label>
-                    <input type="text" class="form-control" id="contact" name="contact" placeholder="">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="">
                   </div>
               </div>
              
