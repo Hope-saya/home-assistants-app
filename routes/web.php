@@ -39,7 +39,8 @@ Route::prefix('/')->middleware(['auth', 'verified'])->group(function () {
     Route::post('/users/create', [DashboardUsersController::class, 'store'])->name('users.store');
     Route::get('/users/{id}/edit', [DashboardUsersController::class, 'edit'])->name('users.edit');
     Route::patch('/users/{id}/edit', [DashboardUsersController::class, 'update'])->name('users.update');
-    Route::delete('/users/{id}/edit', [DashboardUsersController::class, 'destroy'])->name('users.delete');
+    Route::delete('/users/{id}', [DashboardUsersController::class, 'destroy'])->name('users.destroy');
+
 
     //Admin Routes
     Route::get('/admin', [DashboardController::class, 'mainDashboard'])->name('dashboard');
@@ -68,9 +69,11 @@ Route::prefix('/')->middleware(['auth', 'verified'])->group(function () {
 
     //ApplicationSubmissions
 
-    // Route::get('/applicationSubmissions', [ApplicationSubmissionsController::class, 'index'])->name('applicationSubmissions.list');
+    Route::get('/applicationSubmissions', [ApplicationSubmissionsController::class, 'index'])->name('index');
     Route::get('/applicationSubmissions/create/{id}', [ApplicationSubmissionsController::class, 'create'])->name('apply');
     Route::post('/applicationSubmissions/create', [ApplicationSubmissionsController::class, 'store'])->name('ApplicationSubmissions.store');
+    Route::get('/applicationSubmissions/{id}/edit', [ApplicationSubmissionsController::class, 'edit'])->name('applicationSubmissions.edit');
+    Route::patch('/applicationSubmissions/{id}/edit', [ApplicationSubmissionsController::class, 'update'])->name('applicationSubmissions.update');
 
 
 

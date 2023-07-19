@@ -17,24 +17,32 @@
                     <th>JOB ID</th>
                     <th>HOUSEHELP_ID</th>
                     <th>START DATE</th>
-                    <th>FILES</th>
+                    <th>FILE</th>
                     <th>OTHER INFORMATION</th>
                     
                   </tr>
                 </thead>
 
                 <tbody>
-                  @foreach($ApplicationSubmissions as $ApplicationSubmission)
+                  @foreach($applicationSubmissions as $ApplicationSubmission)
                   <tr>
                     <td>{{ $ApplicationSubmission->id }}</td>
-                 
-                    <td>{{ $jobPosting->job_id }}</td>
+                    
+                    <td>{{ $ApplicationSubmission->job_id }}</td>
+                   
                     <td>{{ $ApplicationSubmission->househelp_id }}</td>
                     <td>{{ date('Y-m-d', strtotime($ApplicationSubmission->date)) }}</td>
-                    <td>{{ $ApplicationSubmission->files }}</td>
+                    <td>
+                      @if ($ApplicationSubmission->file)
+                          <a href="{{ asset($ApplicationSubmission->file) }}" target="_blank">View Document</a>
+                      @else
+                          No document available.
+                      @endif
+                  </td>
+                    <td>{{ $ApplicationSubmission->textarea }}</td>
                     <td>
                     
-                        <button class="btn btn-danger btn-sm" value=" " type="submit">Hire</button>
+                        <button class="btn btn-warning btn-sm" value=" " type="submit">Hire</button>
                         <button class="btn btn-danger btn-sm" value=" " type="submit">Reject</button>
                       
                       </td>

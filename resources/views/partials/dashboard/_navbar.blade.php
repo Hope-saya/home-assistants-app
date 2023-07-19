@@ -32,7 +32,7 @@
                   $greeting = 'Good Evening';
               }
             @endphp
-            <h1 class="welcome-text">{{ $greeting }}, <span class="text-black fw-bold"> {{ Auth::user()->name ?? 'Customer' }}</span></h1>
+            <h1 class="welcome-text">{{ $greeting }}, <span class="text-black fw-bold"> {{ Auth::user()->name ?? 'Admin' }}</span></h1>
             <h3 class="welcome-sub-text">Performance summary this week </h3>
           </li>
         </ul>

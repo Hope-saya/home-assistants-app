@@ -5,13 +5,13 @@
                 <div class="row text-center">
                     <div class="col-xl-11 col-xxl-9 mx-auto">
                         <h2 class="fs-16 text-uppercase text-white mb-3">Join Our Community</h2>
-                        <h3 class="display-3 mb-8 px-lg-8 text-white">We are <span class="underline-3 style-2 yellow">trusted</span> by over 5000+ clients. Join them now and grow your business.</h3>
+                        <h3 class="display-3 mb-8 px-lg-8 text-white">We are <span class="underline-3 style-2 yellow">trusted</span> by over 5000+ clients to make life easier in homes.</h3>
                     </div>
                     <!-- /column -->
                 </div>
                 <!-- /.row -->
                 <div class="d-flex justify-content-center">
-                    <span><a class="btn btn-white rounded">Get Started</a></span>
+                    <span><a href="{{ route('register') }}" class="btn btn-white rounded">Get Started</a></span>
                 </div>
             </div>
             <!--/.card-body -->
@@ -21,12 +21,12 @@
             <div class="col-md-4 col-lg-3">
                 <div class="widget">
                     <img class="mb-4" src="./assets/img/logo-dark.png" srcset="./assets/img/logo-dark@2x.png 2x" alt="" />
-                    <p class="mb-4">© 2023 {{ config('app.name') }}. <br class="d-none d-lg-block" />All rights reserved.</p>
+                    <p class="mb-4">© 2023 HomeAid <br class="d-none d-lg-block" />All rights reserved.</p>
                     <nav class="nav social ">
-                        <a href="#"><i class="uil uil-twitter"></i></a>
+                        <a href=""><i class="uil uil-twitter"></i></a>
                         <a href="#"><i class="uil uil-facebook-f"></i></a>
                         <a href="#"><i class="uil uil-dribbble"></i></a>
-                        <a href="#"><i class="uil uil-instagram"></i></a>
+                        <a href="https://www.instagram.com/hope.saya/?hl=en"><i class="uil uil-instagram"></i></a>
                         <a href="#"><i class="uil uil-youtube"></i></a>
                     </nav>
                     <!-- /.social -->
@@ -37,8 +37,8 @@
             <div class="col-md-4 col-lg-3">
                 <div class="widget">
                     <h4 class="widget-title  mb-3">Get in Touch</h4>
-                    <address class="pe-xl-15 pe-xxl-17">Moonshine St. 14/05 Light City, London, United Kingdom</address>
-                    <a href="mailto:#" class="link-body">info@email.com</a><br /> 00 (123) 456 78 90
+                    <address class="pe-xl-15 pe-xxl-17">HomeAid, Nairobi, Kenya</address>
+                    <a href="mailto:homeAid@gmail.com"class="link-body">homeAid@gmail.com</a><br /> +(254)797864266
                 </div>
                 <!-- /.widget -->
             </div>
@@ -49,7 +49,6 @@
                     <ul class="list-unstyled text-reset mb-0">
                         <li><a href="#">About Us</a></li>
                         <li><a href="#">Our Story</a></li>
-                        <li><a href="#">Projects</a></li>
                         <li><a href="#">Terms of Use</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                     </ul>
@@ -64,7 +63,7 @@
                     <div class="newsletter-wrapper">
                         <!-- Begin Mailchimp Signup Form -->
                         <div id="mc_embed_signup2">
-                            <form action="https://elemisfreebies.us20.list-manage.com/subscribe/post?u=aa4947f70a475ce162057838d&amp;id=b49ef47a9a" method="post" id="mc-embedded-subscribe-form2" name="mc-embedded-subscribe-form" class="validate " target="_blank" novalidate>
+                            <form action="" method="post" id="mc-embedded-subscribe-form2" name="mc-embedded-subscribe-form" class="validate " target="_blank" novalidate>
                                 <div id="mc_embed_signup_scroll2">
                                     <div class="mc-field-group input-group form-floating">
                                         <input type="email" value="" name="EMAIL" class="required email form-control" placeholder="Email Address" id="mce-EMAIL2">

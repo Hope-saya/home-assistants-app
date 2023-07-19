@@ -12,8 +12,9 @@ class ApplicationSubmission extends Model
     protected $table = 'application_submissions';
 
     protected $fillable = [
-        'document',
-        'status'
+        'file',
+        'date',
+        'textarea'
     ];
 
     public function jobPosting()

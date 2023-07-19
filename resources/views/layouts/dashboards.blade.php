@@ -217,8 +217,8 @@
                     </a>
                     <div class="collapse" id="form-elements">
                       <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('jobApplications.list') }}">Job Applications</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('jobApplications.add') }}">Add Job Application</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('jobApplications.list') }}">HouseAssistants List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('jobApplications.add') }}">Add HouseAssistant</a></li>
                       </ul>
                     </div>
                   </li>
@@ -232,6 +232,19 @@
                       <ul class="nav flex-column sub-menu">
                         <li class="nav-item"> <a class="nav-link" href="{{ route('jobPostings.list') }}">Job Postings</a></li>
                         <li class="nav-item"> <a class="nav-link" href="{{ route('jobPostings.add') }}">Add Job Posting</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+                      <i class="menu-icon mdi mdi-table"></i>
+                      <span class="menu-title">Applications Submitted</span>
+                      <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="tables">
+                      <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('index') }}">View Applications</a></li>
+                        {{-- <li class="nav-item"> <a class="nav-link" href="{{ route('apply',$jobPosting->id) }}">Add Application</a></li> --}}
                       </ul>
                     </div>
                   </li>

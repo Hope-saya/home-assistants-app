@@ -10,21 +10,15 @@
             <h4 class="card-title">Apply for a Job</h4>
       
           
-            <form class="forms-sample" method="POST" action="{{ route('ApplicationSubmissions.update',$ApplicationSubmission->id) }}" enctype="multipart/form-data">
+              <form class="forms-sample" method="POST" action="{{ route('ApplicationSubmissions.update',$ApplicationSubmission->id) }}" enctype="multipart/form-data">
               @csrf
-
-              <input type="hidden" name="job_id" value="">
+              <input type="hidden" id="job_id" name="job_id" value="{{$jobPosting->id}}">
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">
                     <label>Upload Document</label>
-                    <input type="file" name="file" >
-                    <div class="input-group col-xs-12">
-                     
-                      <span>
-                        <button type="submit">Upload</button>
-                      </span>
-                  </div>
+                    <input type="file" id="file" name="file" >
+                   
                 </div>
                   <div class="col-6">
                   <div class="form-group">
@@ -36,7 +30,7 @@
               
               <div class="form-group">
                 <label for="textarea">Anything more you want to say?</label>
-                <textarea class="form-control" id="textarea" rows="4"></textarea>
+                <textarea class="form-control"  name="textarea" id="textarea" rows="4"></textarea>
               </div>
           
              

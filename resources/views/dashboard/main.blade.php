@@ -43,6 +43,11 @@
                   <h3 class="rate-percentage">{{ count($jobPostings) }}</h3>
                   <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span></span></p>
                 </div>
+                <div>
+                  <p class="statistics-title">Application Submissions</p>
+                  <h3 class="rate-percentage">{{ count($applicationSubmissions ?? []) }}</h3>
+                  <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span></span></p>
+                </div>
                 <div class="d-none d-md-block">
                   <p class="statistics-title">Reviews</p>
                   <h3 class="rate-percentage">{{ count($reviews) }}</h3>

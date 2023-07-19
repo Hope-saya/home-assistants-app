@@ -54,7 +54,7 @@ return new class extends Migration
 
         Schema::create('application_submissions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('job_id')->nullable();
+            $table->unsignedBigInteger('job_id');
             $table->unsignedBigInteger('househelp_id');
             $table->string('file');
             $table->date('date');
@@ -63,8 +63,8 @@ return new class extends Migration
             $table->timestamp('created_at')->nullable();
 
             //Foreign keys
-            $table->foreign('househelp_id')->references('id')->on('job_applications');
-            $table->foreign('job_id')->references('id')->on('job_postings');
+            // $table->foreign('househelp_id')->references('id')->on('job_applications');
+            // $table->foreign('job_id')->references('id')->on('job_postings');
         });
 
 

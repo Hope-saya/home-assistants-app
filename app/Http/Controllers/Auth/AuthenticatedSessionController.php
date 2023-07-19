@@ -26,10 +26,15 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $userEmail = Auth::user()->email;
+
+        if ($userEmail === 'admin@homeAid.com') {
+            return redirect()->route('dashboard')->with('success', 'User registered successfully.');
+        } else {
+            return redirect()->route('home')->with('success', 'User registered successfully.');
+        }
     }
 
     /**

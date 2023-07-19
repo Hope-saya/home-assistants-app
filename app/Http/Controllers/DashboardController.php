@@ -30,6 +30,7 @@ class DashboardController extends Controller
         $reviews = Review::with('user', 'jobPosting')->get();
 
         return view('dashboard.main', compact('users', 'jobApplications', 'jobPostings', 'reviews'));
+        return redirect()->route('home')->with('success', 'User created successfully.');
     }
     public function homeOwner()
     {

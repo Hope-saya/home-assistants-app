@@ -20,7 +20,7 @@
             <div class="navbar-collapse-wrapper d-flex flex-row align-items-center w-100">
                 <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
                     <div class="offcanvas-header mx-lg-auto order-0 order-lg-1 d-lg-flex px-lg-15">
-                        <a href="./index.html" class="transition-none d-none d-lg-flex"><img class="logo-dark" src="{{ asset('frontend/assets/img/logo-dark.png') }}" srcset="./assets/img/logo-dark@2x.png 2x" alt="" />
+                        <a href=""><img class="logo-dark" src="" srcset="" alt="" />
                             <h2>HomeAid</h2>
                         <h3 class="text-white fs-30 mb-0 d-lg-none">HomeAid</h3>
                         <button type="button" class="btn-close btn-close-white d-lg-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -44,12 +44,19 @@
                                 <a class="nav-link" href="{{'jobApplicationsBlog'}}">House Assistants</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="{{ route('login') }}">Login</a>
-                                <!--/.dropdown-menu -->
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="{{ route('register') }}">Register</a>
-                                <!--/.dropdown-menu -->
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user">Profile</i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Log In</a>
+                                    <a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Register</a>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <a class="dropdown-item" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                                            <i class="ri-login-box-line mr-2"></i> Sign Out
+                                        </a>
+                                    </form>
+                                </div>
                             </li>
 
                         </ul>

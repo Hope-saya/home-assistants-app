@@ -26,14 +26,14 @@
     </div>
 </section>
 <!-- /section -->
-<section class="wrapper bg-light">
+{{-- <section class="wrapper bg-light">
     <div class="container pb-15 pb-md-17">
         <div class="row gx-md-5 gy-5 mt-n19 mb-14 mb-md-17">
             <div class="col-md-6 col-xl-3">
                 <div class="card shadow-lg">
                     <div class="card-body">
                         <img src="{{ asset('frontend/assets/img/icons/solid/edit.svg') }}" class="svg-inject icon-svg icon-svg-sm solid-mono text-fuchsia mb-3" alt="" />
-                        <h4>Babysitting</h4>
+                        <h4>House Assistants</h4>
                         <p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras justo.</p>
                         <a href="#" class="more hover link-fuchsia">Learn More</a>
                     </div>
@@ -372,6 +372,6 @@
     </div>
     <!-- /.container -->
 </section>
-<!-- /section -->
+<!-- /section --> --}}
 
 @endsection
