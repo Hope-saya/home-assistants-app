@@ -5,7 +5,7 @@
 <nav>
   <div class="filter-container">
       
-    <i class="filter-icons">➕</i><a href="{{ route('jobPostings.store') }}">Create New</a>
+    <i class="filter-icons">➕</i><a href="{{ route('jobPostings.store') }}">Create New Job Postings Blog</a>
  
   </div>
 </nav>
@@ -30,7 +30,7 @@
         </p>
 
         <button class="btn btn-warning btn-sm">Message</button>
-        <button class="btn btn-danger btn-sm">Apply</button>
+        <a href="{{ route('apply',$jobPosting->id) }}" class="btn btn-danger btn-sm" style="text-decoration: none; color: #fff; background-color: purple; padding: 8px 16px; border-radius: 4px;">Apply</a>
         <a href="/jobPostings/{{ $jobPosting->id }}">Read more...</a>
   
     </div>

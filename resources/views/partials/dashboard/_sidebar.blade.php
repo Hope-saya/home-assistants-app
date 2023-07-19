@@ -1,4 +1,4 @@
-<div class="theme-setting-wrapper">
+{{-- <div class="theme-setting-wrapper">
   <div id="settings-trigger"><i class="ti-settings"></i></div>
   <div id="theme-settings" class="settings-panel">
     <i class="settings-close ti-close"></i>
@@ -253,4 +253,4 @@
       </a>
     </li>
   </ul>
-</nav>
+</nav> --}}

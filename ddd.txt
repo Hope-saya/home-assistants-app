@@ -1,0 +1,19 @@
+
+- Househelp
+    - register/login
+    - see job Postings
+    - looking for a job?
+    - apply
+    - update documents
+
+- owner
+    - register/login
+    - create a job Posting
+
+    - plan of action
+        -  owner dashboard (jobs, Househelp, profile)
+        - Todos:
+            - create the dashboard 
+
+
+- admin

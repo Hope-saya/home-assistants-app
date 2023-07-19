@@ -1,4 +1,5 @@
-@extends('layouts.dashboard')
+@extends('layouts.dashboards')
+
 
 @section('content')
 
@@ -30,32 +31,24 @@
                 <div>
                   <p class="statistics-title">Users</p>
                   <h3 class="rate-percentage">{{ count($users) }}</h3>
-                  <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
+                  <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span></span></p>
                 </div>
                 <div>
                   <p class="statistics-title">Job Applications</p>
                   <h3 class="rate-percentage">{{ count($jobApplications) }}</h3>
-                  <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p>
+                  <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span></span></p>
                 </div>
                 <div>
                   <p class="statistics-title">Job Postings</p>
                   <h3 class="rate-percentage">{{ count($jobPostings) }}</h3>
-                  <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
+                  <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span></span></p>
                 </div>
                 <div class="d-none d-md-block">
                   <p class="statistics-title">Reviews</p>
                   <h3 class="rate-percentage">{{ count($reviews) }}</h3>
-                  <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
+                  <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span></span></p>
                 </div>
-                <div class="d-none d-md-block">
-                  <p class="statistics-title">HouseAssistants Hired</p>
-                  <h3 class="rate-percentage">10</h3>
-                  <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
-                </div>
-                <div class="d-none d-md-block">
-                  <p class="statistics-title">Avg. Time on Site</p>
-                  <h3 class="rate-percentage">2m:35s</h3>
-                  <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
+                
                 </div>
               </div>
             </div>

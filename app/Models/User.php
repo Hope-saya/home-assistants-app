@@ -12,7 +12,15 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    public function getRedirectRoute()
+    {
+        return match ((int)$this->role_id) {
+            1 => 'dashboard',
+            2 => 'homeOwner',
+            3 => 'houseAssistant',
+            // ...
+        };
+    }
     /**
      * The attributes that are mass assignable.
      *

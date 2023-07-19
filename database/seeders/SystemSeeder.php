@@ -16,7 +16,14 @@ class SystemSeeder extends Seeder
         //
         DB::table('roles')->insert([
             'name' => 'users',
-            'description' => 'user-role',
+            'description' => 'houseAssistant-role',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        DB::table('roles')->insert([
+            'name' => 'homeOwner',
+            'description' => 'homeOwner-role',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -37,12 +44,19 @@ class SystemSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Stephen Mungai Muroki',
-            'email' => 'smungaimuroki@gmail.com',
+            'name' => 'Saya Hope',
+            'email' => 'sayaHope@gmail.com',
             'email_verified_at' => now(),
             'roleId' => 1,
             'password' => Hash::make('password')
         ]);
 
+        DB::table('users')->insert([
+            'name' => 'Esther Gift',
+            'email' => 'esther@gmail.com',
+            'email_verified_at' => now(),
+            'roleId' => 3,
+            'password' => Hash::make('password')
+        ]);
     }
 }

@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Hiring extends Model
+class ApplicationSubmission extends Model
 {
     use HasFactory;
+    protected $table = 'application_submissions';
 
     protected $fillable = [
         'document',
@@ -17,7 +18,7 @@ class Hiring extends Model
 
     public function jobPosting()
     {
-        return $this->belongsTo(JobPosting::class, 'user_id', 'id');
+        return $this->belongsTo(JobPosting::class, 'job_id', 'id');
     }
     public function JobApplication()
     {

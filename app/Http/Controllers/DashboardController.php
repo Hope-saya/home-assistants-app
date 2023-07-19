@@ -31,4 +31,13 @@ class DashboardController extends Controller
 
         return view('dashboard.main', compact('users', 'jobApplications', 'jobPostings', 'reviews'));
     }
+    public function homeOwner()
+    {
+        return view('dashboard.homeOwner');
+    }
+
+    public function houseAssistant()
+    {
+        return view('dashboard.houseAssistant');
+    }
 }

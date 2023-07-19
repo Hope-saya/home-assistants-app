@@ -6,9 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\JobApplication;
 use Illuminate\Support\Facades\Auth;
 
-$user = Auth::user();
-
-$id = Auth::id();
 
 class DashboardJobApplicationsController extends Controller
 {
@@ -42,8 +39,12 @@ class DashboardJobApplicationsController extends Controller
      */
     public function store(Request $request)
     {
+        // $user = Auth::user();
+        $id = Auth::id();
+
         //
         $jobApplication = new JobApplication;
+
         $request->validate([
             'title' => 'required',
             'salary_range' => 'required',
@@ -53,13 +54,9 @@ class DashboardJobApplicationsController extends Controller
             'about' => 'required',
             'availability' => 'required',
             'status' => 'required',
-
             'phone' => 'required',
-
-
-
-
         ]);
+
         $jobApplication->title = $request->input('title');
         $jobApplication->salary_range = $request->input('salary_range');
         $jobApplication->location = $request->input('location');
@@ -68,10 +65,9 @@ class DashboardJobApplicationsController extends Controller
         $jobApplication->about = $request->input('about');
         $jobApplication->availability = $request->input('availability');
         $jobApplication->status = $request->input('status');
-
         $jobApplication->phone = $request->input('phone');
 
-
+        $jobApplication->user_id = $id;
 
         $jobApplication->save();
 
@@ -103,6 +99,7 @@ class DashboardJobApplicationsController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $id = Auth::id();
         $jobApplication = new JobApplication;
         $request->validate([
             'title' => 'required',
@@ -129,6 +126,7 @@ class DashboardJobApplicationsController extends Controller
         $jobApplication->status = $request->input('status');
 
         $jobApplication->phone = $request->input('phone');
+        $jobApplication->user_id = $id;
 
 
 

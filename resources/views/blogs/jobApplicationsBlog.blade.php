@@ -6,7 +6,7 @@
 <nav>
   <div class="filter-container">
       
-    <i class="filter-icons">➕</i><a href="{{ route('jobApplications.store') }}">Create New</a>
+    <i class="filter-icons">➕</i><a href="{{ route('jobApplications.store') }}">Create New House Assistants post</a>
  
   </div>
 </nav>
@@ -17,6 +17,8 @@
         <i class="fas fa-user-circle"></i>
         {{ $jobApplication->title }} </h2>
       {{-- </h2><span><button class="badge badge-danger"> {{$jobApplication->status}}</button></span></h2>    --}}
+
+         
          
           <p>Ksh.{{ $jobApplication->salary_range }}</p>
           <p>

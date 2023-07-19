@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('job_postings', function (Blueprint $table) {
             $table->id();
             //$table->string('profile_picture');
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('roleId')->default(1);
             $table->string('title');
             $table->string('status');
@@ -32,7 +32,7 @@ return new class extends Migration
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
             //$table->string('profile_picture');
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->integer('salary_range');
             $table->string('location');
@@ -52,12 +52,13 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
         });
 
-        Schema::create('Hiring', function (Blueprint $table) {
+        Schema::create('application_submissions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('job_id')->nullable();
-            $table->unsignedBigInteger('househelp_id')->nullable();
-            $table->string('status');
-            $table->string('document');
+            $table->unsignedBigInteger('househelp_id');
+            $table->string('file');
+            $table->date('date');
+            $table->longText('textarea');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
 

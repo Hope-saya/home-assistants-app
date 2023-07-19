@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JobPosting;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardJobPostingsController extends Controller
 {
@@ -33,6 +34,7 @@ class DashboardJobPostingsController extends Controller
     public function store(Request $request)
     {
         //
+        $id = Auth::id();
         $jobPosting = new JobPosting;
         $request->validate([
             'title' => 'required',
@@ -49,6 +51,7 @@ class DashboardJobPostingsController extends Controller
         $jobPosting->description = $request->input('description');
         $jobPosting->location = $request->input('location');
         $jobPosting->phone = $request->input('phone');
+        $jobPosting->user_id = $id;
         $jobPosting->save();
 
 
@@ -81,6 +84,7 @@ class DashboardJobPostingsController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $id = Auth::id();
         $jobPosting = JobPosting::findOrFail($id);
         $request->validate([
             'title' => 'required',
@@ -97,6 +101,7 @@ class DashboardJobPostingsController extends Controller
         $jobPosting->description = $request->input('description');
         $jobPosting->location = $request->input('location');
         $jobPosting->contact = $request->input('contact');
+        $jobPosting->user_id = $id;
         $jobPosting->save();
 
         return redirect()->route('jobPostings.list')->with('success', 'Job Posting Updated');
