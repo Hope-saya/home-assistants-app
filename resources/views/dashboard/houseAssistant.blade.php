@@ -198,17 +198,43 @@
                   <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                       <i class="menu-icon mdi mdi-card-text-outline"></i>
-                      <span class="menu-title">Job Applications</span>
+                      <span class="menu-title">House Assistants</span>
                       <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="form-elements">
                       <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('jobApplications.list') }}">Edit Job Applications</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('jobApplications.add') }}">Add Job Application</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('jobApplications.list') }}">View House Assistant Profiles</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('jobApplications.add') }}">Add a house Assistant Profile</a></li>
                       </ul>
                     </div>
                   </li>
-                  
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+                      <i class="menu-icon mdi mdi-table"></i>
+                      <span class="menu-title">Applications Made</span>
+                      <i class="menu-arrow"></i>
+                    </a>
+                    <div class="collapse" id="tables">
+                      <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('index') }}">View Applications</a></li>
+                        
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+                      <i class="menu-icon mdi mdi-table"></i>
+                      <span class="menu-title">Reviews</span>
+                      <i class="menu-arrow"></i>
+                    </a>
+                  <div class="collapse" id="tables">
+                    <ul class="nav flex-column sub-menu">
+                      <li class="nav-item"> <a class="nav-link" href="/reviews">View Reviews</a></li>
+                      
+                     
+                    </ul>
+                  </div>
+                  </li>
                  
 
             <div class="main-panel">

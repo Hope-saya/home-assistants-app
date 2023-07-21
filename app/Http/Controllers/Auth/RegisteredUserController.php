@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use RealRashid\SweetAlert\Facades\Alert;
+
+
+
 
 class RegisteredUserController extends Controller
 {
@@ -22,6 +26,7 @@ class RegisteredUserController extends Controller
     {
         return view('auth.register');
     }
+
 
     /**
      * Handle an incoming registration request.
@@ -34,6 +39,8 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required', 'string', 'max:2'],
+
 
         ]);
 
@@ -41,15 +48,29 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role'  => $request->role,
+
 
         ]);
 
+
         event(new Registered($user));
 
-        // Auth::login($user);
+        Auth::login($user);
 
         //return redirect(RouteServiceProvider::HOME);
+        if ($user->role === 'HO') {
+            Alert::success('Reistration Successful!', 'Welcome');
+            return redirect()->route('homeOwner');
+        } else if ($user->role === 'HH') {
+            Alert::success('Reistration Successful!', 'Welcome');
+            return redirect()->route('houseAssistant');
+        }
 
-        return redirect()->route('home')->with('success', 'User registered successfully.');
+
+
+        // Alert::success('Reistration Successful!', 'Welcome to HomeAid');
+
+        // return redirect()->route('home');
     }
 }

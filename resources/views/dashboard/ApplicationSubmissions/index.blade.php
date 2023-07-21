@@ -19,6 +19,12 @@
                     <th>START DATE</th>
                     <th>FILE</th>
                     <th>OTHER INFORMATION</th>
+                    <th>VERDICT</th>
+                    <th>DATE VERDICT WAS MADE</th>
+                    <th>END OF CONTRACT</th>
+                    <th>RATE</th>
+                    
+                    
                     
                   </tr>
                 </thead>
@@ -40,11 +46,21 @@
                       @endif
                   </td>
                     <td>{{ $ApplicationSubmission->textarea }}</td>
-                    <td>
-                    
-                        <button class="btn btn-warning btn-sm" value=" " type="submit">Hire</button>
-                        <button class="btn btn-danger btn-sm" value=" " type="submit">Reject</button>
-                      
+                    <td>{{ $ApplicationSubmission->verdict }}</td>
+                    <td></td>
+                    <td></td>
+                    <td> <a href="reviews/create/{{$ApplicationSubmission->id}}">Leave a Review</a></td>
+                    <td> 
+                      @can('update', $ApplicationSubmission)
+                      <a href="applicationSubmissions/{{$ApplicationSubmission->id}}/edit}}" class="btn btn-warning btn-sm">Edit</a>
+                      @endcan
+                      @can('delete', $ApplicationSubmission)
+                      <form action="applicationSubmissions/{{$ApplicationSubmission->id}}/destroy}}" method="post" class="d-inline" onclick="return confirm('Are you sure you want to delete this application submission?')">
+                          @csrf
+                          @method('DELETE')
+                          <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                      </form>
+                      @endcan
                       </td>
                   </tr>
                  @endforeach

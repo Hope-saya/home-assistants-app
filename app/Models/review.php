@@ -11,7 +11,6 @@ class Review extends Model
 
     protected $fillable = [
         'comments',
-        'name',
         'star_rating',
 
     ];
@@ -21,10 +20,14 @@ class Review extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function jobPosting()
+    public function application()
     {
-        return $this->belongsTo(JobPosting::class, 'job_id', 'id');
+        return $this->belongsTo(ApplicationSubmission::class, 'application_id', 'id');
     }
+
+
+
+
 
     //properties
     protected $table = 'reviews';

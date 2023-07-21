@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\JobApplication;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class DashboardJobApplicationsController extends Controller
@@ -18,9 +19,11 @@ class DashboardJobApplicationsController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
-        $jobApplications = JobApplication::all(); // Fetch data from the jobApplications table
+    { //// Get the authenticated user
+        $user = Auth::user();
+
+        // Fetch only the job postings related to the authenticated user
+        $jobApplications = JobApplication::where('user_id', $user->id)->get();
 
         return view('dashboard.jobApplications.list-jobApplications', compact('jobApplications'));
     }
@@ -40,7 +43,7 @@ class DashboardJobApplicationsController extends Controller
     public function store(Request $request)
     {
         // $user = Auth::user();
-        $id = Auth::id();
+        $user_id = Auth::id();
 
         //
         $jobApplication = new JobApplication;
@@ -67,11 +70,11 @@ class DashboardJobApplicationsController extends Controller
         $jobApplication->status = $request->input('status');
         $jobApplication->phone = $request->input('phone');
 
-        $jobApplication->user_id = $id;
+        $jobApplication->user_id = $user_id;
 
         $jobApplication->save();
-
-        return redirect()->route('jobApplications.list')->with('success', 'Job Application Added');
+        Alert::success('Success', 'Job Application Added Successfully');
+        return redirect()->route('jobApplications.list');
     }
 
     /**
@@ -99,8 +102,9 @@ class DashboardJobApplicationsController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        $id = Auth::id();
-        $jobApplication = new JobApplication;
+        $user_id = Auth::id();
+        // Find the existing JobApplication by its ID
+        $jobApplication = JobApplication::findOrFail($id);
         $request->validate([
             'title' => 'required',
             'salary_range' => 'required',
@@ -126,12 +130,14 @@ class DashboardJobApplicationsController extends Controller
         $jobApplication->status = $request->input('status');
 
         $jobApplication->phone = $request->input('phone');
-        $jobApplication->user_id = $id;
+        $jobApplication->user_id = $user_id;
 
 
 
 
         $jobApplication->save();
+
+        Alert::success('Success', 'Job Application updated Successfully');
 
         return redirect()->route('jobApplications.list')->with('success', 'Job Application Updated');
     }
@@ -145,8 +151,10 @@ class DashboardJobApplicationsController extends Controller
         $jobApplication = jobApplication::find($id);
         if ($jobApplication) {
             $jobApplication->delete();
+            Alert::success('Success', 'Job Application Added Successfully');
             return redirect()->route('jobApplications.list')->with('success', 'Job Posting Deleted');
         } else {
+            Alert::error('Error', 'Job Application not found');
             return redirect('jobApplications.list')->with('status', 'jobApplication not found');
         }
     }

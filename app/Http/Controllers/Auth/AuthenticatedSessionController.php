@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -30,10 +31,23 @@ class AuthenticatedSessionController extends Controller
 
         $userEmail = Auth::user()->email;
 
+
         if ($userEmail === 'admin@homeAid.com') {
-            return redirect()->route('dashboard')->with('success', 'User registered successfully.');
+            Alert::success('Login Success', 'Welcome Admin');
+            return redirect()->route('dashboard');
         } else {
-            return redirect()->route('home')->with('success', 'User registered successfully.');
+            $userRole = Auth::user()->role;
+            if ($userRole === 'HH') {
+                Alert::success('Login Success', 'Welcome ');
+                return redirect()->route('houseAssistant');
+            } else if ($userRole === 'HO') {
+                Alert::success('Login Success', 'Welcome ');
+                return redirect()->route('homeOwner');
+            }
+
+
+            // Alert::success('Login Success', 'Welcome to HomeAid');
+            // return redirect()->route('home');
         }
     }
 

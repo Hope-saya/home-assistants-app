@@ -50,7 +50,7 @@
                 </div>
                 <div class="d-none d-md-block">
                   <p class="statistics-title">Reviews</p>
-                  <h3 class="rate-percentage">{{ count($reviews) }}</h3>
+                  <h3 class="rate-percentage">{{ count($reviews ?? []) }}</h3>
                   <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span></span></p>
                 </div>
                 

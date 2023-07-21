@@ -5,7 +5,7 @@
       <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Job Postings</h4>
+            <h4 class="card-title">Househelp Profiles</h4>
             
             <div class="table-responsive">
               <table class="table table-striped">
@@ -18,11 +18,12 @@
                     <th>title</th>
                     <th>Salary Range</th>
                     <th>Location</th>
-                    <th>Contact</th>
+                    <th>Phone</th>
                     <th>Skillset</th>
                     <th>About</th>
                     <th>Availability</th>
                     <th>Date Created</th>
+                    <th>ACTION</th>
                   </tr>
                 </thead>
 
@@ -35,21 +36,28 @@
                     <td>{{ $jobApplication->title }}</td>
                     <td>{{ $jobApplication->salary_range }}</td>
                     <td>{{ $jobApplication->location }}</td>
-                    <td>{{ $jobApplication->contact }}</td>
+                    <td>{{ $jobApplication->phone }}</td>
                     <td>{{ $jobApplication->skillset }}</td>
                     <td>{{ $jobApplication->about }}</td>
+                    <td>{{ $jobApplication->availability }}</td>
                     <td>{{ date('Y-m-d', strtotime($jobApplication->created_at)) }}</td>
                     <td>
                     
+                      @can('update', $jobApplication)
                       <a href="jobApplications/{{$jobApplication->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                  @endcan
+                  
+                  @can('delete', $jobApplication)
                       <form action="jobApplications/{{$jobApplication->id}}/destroy" method="post" class="d-inline" onclick="return confirm('Are you sure you want to delete this job posting?')">
-                        <input type="hidden" name="_method" value="DELETE">
+                          <input type="hidden" name="_method" value="DELETE">
                           {{ csrf_field() }}
-                          
+                  
                           {{-- @method('DELETE') --}}
                           {{-- <input type="number" value="{{ $jobApplication->id }}" name="jobApplicationId" hidden> --}}
                           <button class="btn btn-danger btn-sm" value="Delete User" type="submit"> Delete </button>
                       </form>
+                  @endcan
+                  
                       </td>
                   </tr>
                  @endforeach

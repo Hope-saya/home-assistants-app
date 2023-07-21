@@ -97,9 +97,9 @@
 <body>
     <nav>
         <div class="filter-container">
-            <i class="filter-icons"></i><a href="#">Home</a>
-            <i class="filter-icons"></i><a href="#">About</a>
-            <i class="filter-icons"></i><a href="#">Contact</a>
+            <i class="filter-icons"></i><a href={{ route('home') }}>Home</a>
+            <i class="filter-icons"></i><a href={{ route('home') }}>About</a>
+            <i class="filter-icons"></i><a href="mailto:info@homeAid.com">Contact</a> 
         </div>
     </nav>
 
@@ -110,7 +110,8 @@
     </div>
 
     <footer>
-        &copy; {{ date('Y') }} My Blog. All rights reserved.
+        &copy; {{ date('Y') }} homeAid. All rights reserved.
     </footer>
+    @include('sweetalert::alert')
 </body>
 </html>

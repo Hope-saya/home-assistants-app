@@ -23,13 +23,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique(); //unique email
             $table->timestamp('email_verified_at')->nullable();
-            $table->unsignedBigInteger('roleId')->default(1);
+            $table->string('role');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps(); //created_at and updated_at
 
             //Foreign Key
-            $table->foreign('roleId')->references('id')->on('roles');
+            // $table->foreign('roleId')->references('id')->on('roles');
         });
     }
 

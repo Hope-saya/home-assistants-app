@@ -59,12 +59,19 @@ return new class extends Migration
             $table->string('file');
             $table->date('date');
             $table->longText('textarea');
+            $table->string('verdict')->nullable(); //accepted /declined
+            $table->date('date_of_verdict')->nullable();
+            $table->date('end_of_contract')->nullable();
+
+
+
+
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
 
             //Foreign keys
-            // $table->foreign('househelp_id')->references('id')->on('job_applications');
-            // $table->foreign('job_id')->references('id')->on('job_postings');
+            $table->foreign('househelp_id')->references('id')->on('job_applications');
+            $table->foreign('job_id')->references('id')->on('job_postings');
         });
 
 
@@ -73,16 +80,16 @@ return new class extends Migration
 
 
             $table->id();
-            $table->unsignedBigInteger('job_id')->nullable();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('name');
+            $table->unsignedBigInteger('application_id');
+            $table->unsignedBigInteger('user_id');
+
             $table->longText('comments');
             $table->integer('star_rating');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('created_at')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('job_id')->references('id')->on('job_postings');
+            $table->foreign('application_id')->references('id')->on('application_submissions');
         });
     }
 

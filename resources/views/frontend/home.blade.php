@@ -9,7 +9,7 @@
                 <h1 class="display-1 text-white fs-60 mb-4 px-md-15 px-lg-0">We bring solutions to make life <span class="underline-3 style-2 yellow">easier</span></h1>
                 <p class="lead fs-24 text-white lh-sm mb-7 mx-md-13 mx-lg-10">Your Perfect Match for Easier Living: Housekeepers & Homeowners United</p>
                 <div>
-                    <a class="btn btn-white rounded mb-10 mb-xxl-5">Read More</a>
+                    <a href="{{ route('home') }}" class="btn btn-white rounded mb-10 mb-xxl-5">Read More</a>
                 </div>
             </div>
             <!-- /column -->

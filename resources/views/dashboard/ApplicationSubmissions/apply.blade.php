@@ -24,7 +24,7 @@
                   <div class="col-6">
                   <div class="form-group">
                     <label for="date">When are you available to Start?</label>
-                    <input type="date" class="form-control" id="date" name="date" placeholder="">
+                    <input min="{{ date('Y-m-d') }}" type="date" class="form-control" id="date" name="date" placeholder="">
                   </div>
                 </div>
               </div>

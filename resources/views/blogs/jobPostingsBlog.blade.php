@@ -3,7 +3,7 @@
 @section('content')
 <nav>
   <div class="filter-container">
-    <i class="filter-icons">➕</i><a href="{{ route('jobPostings.store') }}">Create New Job Postings Blog</a>
+    <i class="filter-icons">➕</i><a href="{{ route('jobPostings.store') }}">Create New House Vacancy</a>
     <a href="{{ route('homeOwner') }}" class="dashboard-link">
       <i class="dashboard-icon fas fa-tachometer-alt"></i> Go to my Dashboard
     </a>
@@ -14,10 +14,13 @@
   @foreach($jobPostings as $jobPosting)
   <div class="post">
     <h2>
-      <i class="fas fa-user-circle"></i>
-      {{ $jobPosting->title }}<span class="badge badge-danger">{{ $jobPosting->status }}</span>
+      
+      {{ $jobPosting->title }}
     </h2>
-
+    <p>
+      <i class="fas fa-user-circle"></i>
+      {{$jobPosting->user->name }} <span class="badge badge-danger">{{ $jobPosting->status }}</span>
+    </p>
     <p>Ksh.{{ $jobPosting->salary_range }}</p>
     <p>
       <i class="fas fa-map-marker-alt"></i>
@@ -34,8 +37,8 @@
 
     <div class="button-container">
       <button class="btn btn-warning btn-sm">Message</button>
-      <a href="{{ route('apply',$jobPosting->id) }}" class="btn btn-danger btn-sm">Apply</a>
-      <a href="/jobPostings/{{ $jobPosting->id }}">Read more...</a>
+      <a href="{{ route('apply',$jobPosting->id) }}" ><button class="btn btn-warning btn-sm">Apply</button></a>
+      <a href="{{route('jobApplications.list')}}">Read more...</a>
     </div>
   </div>
   @endforeach

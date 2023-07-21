@@ -26,17 +26,17 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ date('Y-m-d', strtotime($user->created_at)) }}</td>
                 <td>
-                  @can('update', $user)
+                  {{-- @can('update', $user) --}}
                   <a href="users/{{$user->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                  @endcan
-                  @can('delete', $user)
+                  {{-- @endcan
+                  @can('delete', $user) --}}
                   <form action="{{ route('users.destroy', $user->id) }}" method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this user?');">
                     @csrf
                     @method('DELETE')
             
                     <button class="btn btn-danger btn-sm" type="submit">Remove Account</button>
                   </form>
-                  @endcan
+                  {{-- @endcan --}}
                 </td>
               </tr>
             @endforeach

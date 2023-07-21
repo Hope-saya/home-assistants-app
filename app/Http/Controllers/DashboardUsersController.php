@@ -70,7 +70,6 @@ class DashboardUsersController extends Controller
         $user = User::with('roles')->find($id);
 
 
-        $this->authorize('update', $user);
 
         return view('dashboard.users.edit-user', compact('user'));
     }
@@ -82,7 +81,7 @@ class DashboardUsersController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        $this->authorize('update', $user);
+
 
 
         //Fields are required before submission
@@ -108,7 +107,7 @@ class DashboardUsersController extends Controller
     {
         //
         $user = User::findOrFail($id);
-        $this->authorize('delete', $user);
+
         if ($user) {
             $user->delete();
             return redirect()->route('users.list')->with('success', 'User Deleted');

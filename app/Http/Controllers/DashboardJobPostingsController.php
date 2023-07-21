@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\JobPosting;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardJobPostingsController extends Controller
 {
@@ -13,8 +14,11 @@ class DashboardJobPostingsController extends Controller
      */
     public function index()
     {
-        //
-        $jobPostings = JobPosting::with('user')->get();
+        //// Get the authenticated user
+        $user = Auth::user();
+
+        // Fetch only the job postings related to the authenticated user
+        $jobPostings = JobPosting::where('user_id', $user->id)->get();
 
         return view('dashboard.jobPostings.list-jobPostings', compact('jobPostings'));
     }
@@ -34,8 +38,12 @@ class DashboardJobPostingsController extends Controller
     public function store(Request $request)
     {
         //
-        $id = Auth::id();
+        $user_id = Auth::id();
+        $user = Auth::user();
+        $user_name = $user->name;
+
         $jobPosting = new JobPosting;
+
         $request->validate([
             'title' => 'required',
             'status' => 'required',
@@ -51,10 +59,12 @@ class DashboardJobPostingsController extends Controller
         $jobPosting->description = $request->input('description');
         $jobPosting->location = $request->input('location');
         $jobPosting->phone = $request->input('phone');
-        $jobPosting->user_id = $id;
+        $jobPosting->user_id = $user_id;
+        $jobPosting->user()->associate($user);
         $jobPosting->save();
 
 
+        Alert::success('Success', 'Job Posting Added Successfully');
         return redirect()->route('jobPostings.list')->with('success', 'Job Posting Added');
     }
 
@@ -84,7 +94,7 @@ class DashboardJobPostingsController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        $id = Auth::id();
+        $user_id = Auth::id();
         $jobPosting = JobPosting::findOrFail($id);
         $request->validate([
             'title' => 'required',
@@ -92,7 +102,7 @@ class DashboardJobPostingsController extends Controller
             'salary_range' => 'required',
             'description' => 'required',
             'location' => 'required',
-            'contact' => 'required',
+            'phone' => 'required',
 
         ]);
         $jobPosting->title = $request->input('title');
@@ -100,9 +110,11 @@ class DashboardJobPostingsController extends Controller
         $jobPosting->salary_range = $request->input('salary_range');
         $jobPosting->description = $request->input('description');
         $jobPosting->location = $request->input('location');
-        $jobPosting->contact = $request->input('contact');
-        $jobPosting->user_id = $id;
+        $jobPosting->phone = $request->input('phone');
+        $jobPosting->user_id = $user_id;
         $jobPosting->save();
+
+        Alert::success('Success', 'Job Posting Updated Successfully');
 
         return redirect()->route('jobPostings.list')->with('success', 'Job Posting Updated');
     }
@@ -116,8 +128,12 @@ class DashboardJobPostingsController extends Controller
         $jobPosting = jobPosting::find($id);
         if ($jobPosting) {
             $jobPosting->delete();
+
+            Alert::success('Success', 'Job Posting Deleted Successfully');
             return redirect()->route('jobPostings.list')->with('success', 'Job Posting Deleted');
         } else {
+
+            Alert::error('Error', 'Job Posting not found');
             return redirect('jobPostings.list')->with('status', 'jobPosting not found');
         }
     }

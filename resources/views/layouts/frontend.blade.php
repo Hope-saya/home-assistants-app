@@ -18,6 +18,7 @@
 
     @include('partials.frontend.footer')
     @include('partials.frontend.js')
+    @include('sweetalert::alert')
 
 </body>
 

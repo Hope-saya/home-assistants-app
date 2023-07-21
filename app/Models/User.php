@@ -30,6 +30,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -56,4 +57,24 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class, 'roleId', 'id');
     }
+
+    public function chat()
+    {
+        return $this->hasMany(Chat::class, 'chat_id', 'id');
+    }
+
+    public function jobApplications()
+    {
+        return $this->hasMany(JobApplication::class, 'user_id', 'id');
+    }
+
+    public function jobPostings()
+    {
+        return $this->hasMany(JobPosting::class, 'user_id', 'id');
+    }
+
+    // public function applicationSubmissions()
+    // {
+    //     return $this->hasMany(applicationSubmissions::class, 'jobApplication_id', 'id');
+    // }
 }

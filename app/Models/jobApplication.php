@@ -17,7 +17,10 @@ class JobApplication extends Model
     }
 
 
-
+    public function applicationSubmissions()
+    {
+        return $this->hasMany(ApplicationSubmission::class, 'househelp_id', 'id');
+    }
 
 
     //properties

@@ -11,8 +11,18 @@ use App\Http\Controllers\DashboardRolesController;
 use App\Http\Controllers\jobPostingsBlogController;
 use App\Http\Controllers\jobApplicationsBlogController;
 use App\Http\Controllers\ApplicationSubmissionsController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
+
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/chat', 'App\Http\Controllers\ChatController@index');
+    Route::post('/chat/send', 'App\Http\Controllers\ChatController@sendMessage');
+    Route::get('/chat/messages', 'App\Http\Controllers\ChatController@getMessages');
+});
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,8 +34,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+
+
 Route::get('/', [FrontendController::class, 'homePage'])->name('home');
 Route::prefix('/')->middleware(['auth', 'verified'])->group(function () {
+
+
 
 
     Route::get('/jobPostingsBlog', [JobPostingsBlogController::class, 'index'])->name('jobPostingsBlog');
@@ -44,6 +60,10 @@ Route::prefix('/')->middleware(['auth', 'verified'])->group(function () {
 
     //Admin Routes
     Route::get('/admin', [DashboardController::class, 'mainDashboard'])->name('dashboard');
+    Route::get('/admin/jobPostings', [AdminController::class, 'viewjobPostings'])->name('jobPostings.list');
+    Route::get('/admin/jobApplications', [AdminController::class, 'viewjobApplications'])->name('jobApplications.list');
+    Route::get('/admin/ApplicationSubmissions', [AdminController::class, 'viewApplicationsSubmissions'])->name('index');
+
 
     //Home Owner
     Route::get('/homeOwner', [DashboardController::class, 'homeOwner'])->name('homeOwner');
@@ -70,12 +90,15 @@ Route::prefix('/')->middleware(['auth', 'verified'])->group(function () {
     //ApplicationSubmissions
 
     Route::get('/applicationSubmissions', [ApplicationSubmissionsController::class, 'index'])->name('index');
+    Route::get('/applicationSubmissions/verdict', [ApplicationSubmissionsController::class, 'index2'])->name('index2');
     Route::get('/applicationSubmissions/create/{id}', [ApplicationSubmissionsController::class, 'create'])->name('apply');
     Route::post('/applicationSubmissions/create', [ApplicationSubmissionsController::class, 'store'])->name('ApplicationSubmissions.store');
     Route::get('/applicationSubmissions/{id}/edit', [ApplicationSubmissionsController::class, 'edit'])->name('applicationSubmissions.edit');
     Route::patch('/applicationSubmissions/{id}/edit', [ApplicationSubmissionsController::class, 'update'])->name('applicationSubmissions.update');
 
-
+    //reject and hire
+    Route::post('/hire/{applicationSubmission}', [ApplicationSubmissionsController::class, 'hire'])->name('hire');
+    Route::post('/reject/{applicationSubmission}', [ApplicationSubmissionsController::class, 'reject'])->name('reject');
 
 
 
@@ -90,12 +113,15 @@ Route::prefix('/')->middleware(['auth', 'verified'])->group(function () {
 
     //reviews
     Route::get('/reviews', [DashboardReviewsController::class, 'index'])->name('reviews.list');
-    Route::get('/reviews/create', [DashboardReviewsController::class, 'create'])->name('reviews.add');
+
+    Route::get('/reviews/create/{id}', [DashboardReviewsController::class, 'create'])->name('reviews.add');
     Route::post('/reviews/create', [DashboardReviewsController::class, 'store'])->name('reviews.store');
     Route::get('/reviews/{id}/edit', [DashboardReviewsController::class, 'edit'])->name('reviews.edit');
     Route::patch('/reviews/{id}/edit', [DashboardReviewsController::class, 'update'])->name('reviews.update');
     Route::delete('/reviews/{id}/destroy', [DashboardReviewsController::class, 'destroy'])->name('reviews.delete');
 });
+
+
 
 //Dashboard
 Route::prefix('/dashboards')->middleware(['auth', 'verified'])->group(function () {

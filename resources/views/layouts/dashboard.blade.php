@@ -27,6 +27,8 @@
     </div>
 
     @include ('partials.dashboard.js')
+    @include('sweetalert::alert')
+
 
 </body>
 

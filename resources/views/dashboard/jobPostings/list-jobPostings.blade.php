@@ -18,7 +18,7 @@
                     <th>Description</th>
                     <th>Salary Range</th>
                     <th>Location</th>
-                    <th>Contact</th>
+                    <th>Phone</th>
                     <th>Date Posted</th>
                   </tr>
                   
@@ -34,13 +34,14 @@
                     <td>{{$jobPosting->description}}</td>
                     <td>{{ $jobPosting->salary_range }}</td>
                     <td>{{ $jobPosting->location }}</td>
-                    <td>{{ $jobPosting->contact }}</td>
+                    <td>{{ $jobPosting->phone }}</td>
                     <td>{{ date('Y-m-d', strtotime($jobPosting->created_at)) }}</td>
                     <td>
                      
+                      @can('update', $jobPosting)
                       <a href="jobPostings/{{$jobPosting->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                     
-   
+                      @endcan
+                      @can('delete', $jobPosting)
                       <form action="jobPostings/{{$jobPosting->id}}/destroy" method="post" class="d-inline" onclick="return confirm('Are you sure you want to delete this job posting?')">
                         <input type="hidden" name="_method" value="DELETE">
                           {{ csrf_field() }}
@@ -49,6 +50,7 @@
                           {{-- <input type="number" value="{{ $jobPosting->id }}" name="jobPostingId" hidden> --}}
                           <button class="btn btn-danger btn-sm" value="Delete User" type="submit"> Delete </button>
                       </form>
+                      @endcan
                       </td> 
                   </tr>
                  @endforeach

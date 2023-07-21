@@ -17,6 +17,19 @@
             <x-text-input id="email" class="block mt-1 w-full bg-white border border-purple-300 rounded-md focus:border-purple-500 focus:ring focus:ring-purple-200" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
+        <div class="mt-4">
+            <label for="role" class="form-label">{{ __('Preferred Role') }}</label>
+            <select id="role" class="form-select @error('role') is-invalid @enderror" name="role" required>
+               
+                
+                    <option value="HO" >House Owner</option>
+                    <option value="HH" >House Help</option>
+              
+            </select>
+
+          
+        </div>
+
 
         <!-- Password -->
         <div class="mt-4">

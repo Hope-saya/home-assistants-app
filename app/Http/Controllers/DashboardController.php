@@ -16,7 +16,7 @@ class DashboardController extends Controller
     public function mainDashboard()
     {
 
-        // $user = Auth::user();
+        $user = Auth::user();
 
         // // Retrieve the currently authenticated user's ID...
         // $id = Auth::id();
@@ -26,10 +26,10 @@ class DashboardController extends Controller
         $users = User::with('roles')->get();
         // $roles = Role::with('users')->get();
         $jobApplications = JobApplication::with('user')->get();
-        $jobPostings = JobPosting::with('user', 'reviews')->get();
-        $reviews = Review::with('user', 'jobPosting')->get();
+        $jobPostings = JobPosting::with('user')->get();
+        $reviews = Review::with('user')->get();
 
-        return view('dashboard.main', compact('users', 'jobApplications', 'jobPostings', 'reviews'));
+        return view('dashboard.main', compact('users', 'jobApplications', 'jobPostings'));
         return redirect()->route('home')->with('success', 'User created successfully.');
     }
     public function homeOwner()

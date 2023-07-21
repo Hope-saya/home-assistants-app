@@ -17,12 +17,17 @@ class ApplicationSubmission extends Model
         'textarea'
     ];
 
-    public function jobPosting()
-    {
-        return $this->belongsTo(JobPosting::class, 'job_id', 'id');
-    }
+    // public function jobPosting()
+    // {
+    //     return $this->belongsTo(JobPosting::class, 'job_id', 'id');
+    // }
     public function JobApplication()
     {
         return $this->belongsTo(JobApplication::class, 'househelp_id', 'id');
+    }
+
+    public function jobPosting()
+    {
+        return $this->belongsTo(JobPosting::class, 'job_id', 'id');
     }
 }

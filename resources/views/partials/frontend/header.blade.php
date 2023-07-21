@@ -46,16 +46,23 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-user">Profile</i>
-                                </a>
+                                </a>    
+                               
                                 <div class="dropdown-menu" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Log In</a>
-                                    <a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Register</a>
+                                    
+                                    @if(Auth::check())
+                                    <div>{{ auth()->user()->name }}</div>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
                                         <a class="dropdown-item" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
                                             <i class="ri-login-box-line mr-2"></i> Sign Out
                                         </a>
                                     </form>
+                                    @else
+
+                                    <a class="dropdown-item" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Log In</a>
+                                    <a class="dropdown-item" href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Register</a>
+                                    @endif
                                 </div>
                             </li>
 

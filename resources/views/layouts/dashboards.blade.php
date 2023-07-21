@@ -257,7 +257,7 @@
                     <div class="collapse" id="tables">
                       <ul class="nav flex-column sub-menu">
                         <li class="nav-item"> <a class="nav-link" href="{{ route('reviews.list') }}">Reviews</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('reviews.add') }}">Add Review</a></li>
+                        {{-- <li class="nav-item"> <a class="nav-link" href="reviews/create{{}}">Add Review</a></li> --}}
                       </ul>
                     </div>
                   </li>
@@ -295,6 +295,8 @@
     </div>
 
     @include ('partials.dashboard.js')
+    @include('sweetalert::alert')
+
 
 </body>
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardReviewsController extends Controller
 {
@@ -21,10 +23,11 @@ class DashboardReviewsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($application_id)
     {
         //
-        return view('dashboard.reviews.add-review');
+
+        return view('dashboard.reviews.add-review', compact('application_id'));
     }
 
     /**
@@ -32,20 +35,26 @@ class DashboardReviewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $review = new Review;
+
+        // dd($request->all());
+
+        $id = Auth::id();
+
+        $review = new Review();
         $request->validate([
             'comments' => 'required',
-            'name' => 'required',
             'star_rating' => 'required',
 
         ]);
         $review->comments = $request->input('comments');
-        $review->name = $request->input('name');
         $review->star_rating = $request->input('star_rating');
+        $review->user_id = $id;
+        $review->application_id = $request->input('application_id');
         $review->save();
 
-        return redirect()->route('dashboard.reviews')->with('success', 'Review Added');
+
+        Alert::success('Review Added', 'Thank you for your feedback');
+        return redirect()->route('home')->with('success', 'Review Added');
     }
 
     /**
@@ -84,6 +93,8 @@ class DashboardReviewsController extends Controller
         $review->star_rating = $request->input('star_rating');
         $review->save();
 
+
+        Alert::success('Review Updated', 'Thank you for your feedback');
         return redirect()->route('dashboards.reviews')->with('success', 'Review Updated');
     }
 
@@ -95,6 +106,8 @@ class DashboardReviewsController extends Controller
         //
         $review = Review::findOrFail($id);
         $review->delete();
+
+        Alert::success('Review Deleted', 'Thank you for your feedback');
 
         return redirect()->route('dashboards.reviews')->with('success', 'Review Deleted');
     }

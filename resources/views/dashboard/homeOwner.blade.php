@@ -217,7 +217,7 @@
                     </a>
                     <div class="collapse" id="tables">
                       <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('index') }}">View Applications</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('index2') }}">Review Applications</a></li>
                         
                       </ul>
                     </div>
@@ -230,8 +230,9 @@
                     </a>
                     <div class="collapse" id="tables">
                       <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('reviews.list') }}">Reviews</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('reviews.add') }}">Add Review</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="/reviews">View Reviews</a></li>
+                        
+                       
                       </ul>
                     </div>
                   </li>
